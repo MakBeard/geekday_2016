@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.content.res.Resources;
@@ -24,6 +25,8 @@ import android.widget.Button;
 import com.makbeard.logoped.model.TaleModel;
 import com.makbeard.logoped.model.TalePart;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedList;
 
 import butterknife.BindView;
@@ -52,6 +55,8 @@ public class MainActivity extends AppCompatActivity implements Const {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        doFileOperationsWrapper();
+
         ButterKnife.bind(this);
 
 
@@ -59,15 +64,11 @@ public class MainActivity extends AppCompatActivity implements Const {
 
         //test
         play = (Button) findViewById(R.id.play_button);
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("happy", "Player enable");
-                TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
-                taleAudioPlayer.playExm(v.getContext());
-            }
-
-//test
+        assert play != null;
+        play.setOnClickListener(v -> {
+            Log.d("happy", "Player enable");
+            TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
+            taleAudioPlayer.playExm(v.getContext());
         });
 
 //выпадающие списки детей и врачей
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements Const {
         adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
+        assert spinner != null;
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -98,22 +100,65 @@ public class MainActivity extends AppCompatActivity implements Const {
 
 //переключатель между списками
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+       /* radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.radiobutton1:
-                        spinner.setAdapter(adapterDoctors);
-                        chooseSomething = 1;
-                        break;
-                    case R.id.radiobutton2:
-                        spinner.setAdapter(adapterChild);
-                        chooseSomething = 2;
-                }
+            public void onCheckedChanged(RadioGroup group, int checkedId) {*/
+        assert radioGroup != null;
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.radiobutton1:
+                    spinner.setAdapter(adapterDoctors);
+                    chooseSomething = 1;
+                    break;
+                case R.id.radiobutton2:
+                    spinner.setAdapter(adapterChild);
+                    chooseSomething = 2;
             }
         });
 
     }
+
+
+    private void doFileOperationsWrapper() {
+
+        // если прав нет
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, P)) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Необходимо предоставить доступ в память для добавления сказок")
+                    /*.setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // здесь мы запросим права*/
+                    .setPositiveButton("Ок", (dialog, which) -> {
+                        // здесь мы запросим права
+                        makeRequest();
+                    })
+                    /*.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {*/
+                    .setNegativeButton("Нет", (dialog, which) -> {
+                        // нам здесь делать нечего
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("Добавление сказок не будет работать корректно")
+                                .create()
+                                .show();
+                    })
+                    .create()
+                    .show();
+
+            return; // сказали пользователю все, пусть решает
+
+        }
+
+        // просто запрашиваем права
+        makeRequest();
+    }
+
+    private void makeRequest() {
+        ActivityCompat.requestPermissions(this, new String[]{P}, 22);
+    }
+
 
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
@@ -133,36 +178,7 @@ public class MainActivity extends AppCompatActivity implements Const {
                 break;
         }
 
-/*    @OnClick(R.id.testPlayer)
-    public void startPlayerActivity() {*/
 
-        // Make some dummy data for test
-/*        LinkedList<TalePart> taleParts = new LinkedList<>();
-        taleParts.add(new TalePart(
-                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_1, null).toString(),
-                "Жили-были...",
-                ""
-        ));
-        taleParts.add(new TalePart(
-                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_2, null).toString(),
-                "...водку пили...",
-                ""
-        ));
-        taleParts.add(new TalePart(
-                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_3, null).toString(),
-                "...морду били...",
-                ""
-        ));
-        taleParts.add(new TalePart(
-                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_4, null).toString(),
-                "...так и прожили.",
-                ""
-        ));
-
-        TaleModel tale = new TaleModel(
-                "Сказка про алкашей",
-                ResourcesCompat.getDrawable(getResources(), R.drawable.udach_rybalka_1, null).toString(),
-                taleParts);*/
 
 
 /*    @OnClick(R.id.play_button)
@@ -173,7 +189,7 @@ public class MainActivity extends AppCompatActivity implements Const {
     }*/
 
 
-/*        startActivity(TalePlayer.makeIntent(this, tale));
-    }*/
     }
 }
+
+
