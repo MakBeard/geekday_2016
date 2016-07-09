@@ -7,4 +7,20 @@
     <string name="enter_text">Введите текст</string>
     <string name="save">Сохранить</string>
     <string name="tale_saved">Рассказ сохранён</string>
+
+    <string name="title_activity_tale_player">TalePlayer</string>
+    <string name="dummy_button">Dummy Button</string>
+    <string name="dummy_content">Текст сказки. ооооочень длинный...</string>
+
+    <string-array name="child">
+        <item>Ребенок №1</item>
+        <item>Ребенок №2</item>
+        <item>Ребенок №3</item>
+    </string-array>
+
+    <string-array name="doctors">
+        <item>Доктор №1</item>
+        <item>Доктор №2</item>
+        <item>Доктор №3</item>
+    </string-array>
 </resources>

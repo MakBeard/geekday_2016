@@ -9,21 +9,54 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.makbeard.logoped.MainActivity">
 
-    <EditText
+    <!--<EditText
         android:id="@+id/name_edittext"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Введи имя"/>
+        android:hint="Введи имя"/>-->
+
+    <RadioGroup
+        android:id="@+id/radiogroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <RadioButton
+            android:id="@+id/radiobutton1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Доктор" />
+
+        <RadioButton
+            android:id="@+id/radiobutton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Пациент" />
+
+    </RadioGroup>
+
+    <Spinner
+        android:layout_below="@id/radiogroup"
+        android:id="@+id/name_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
 
     <Button
         android:id="@+id/enter_button"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
-        android:layout_below="@id/name_edittext"
-        android:layout_alignLeft="@id/name_edittext"
-        android:layout_alignRight="@id/name_edittext"
-        android:gravity="center"
-        android:text="Вперёд"/>
+        android:layout_below="@id/name_spinner"
+        android:text="Вперёд" />
+
+    <Button
+        android:id="@+id/play_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Play"/>
 
 </RelativeLayout>
