@@ -38,7 +38,8 @@
         <activity
             android:name=".TaleChooserActivity"
             android:label="Выберите сказку"
-            android:screenOrientation="landscape" />
+            android:screenOrientation="landscape"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".TaleReadPickActivity"
             android:parentActivityName=".TaleChooserActivity"
