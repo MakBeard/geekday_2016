@@ -9,6 +9,8 @@ import android.content.pm.PackageManager;
 import android.media.AudioManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
+import android.content.res.Resources;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -19,7 +21,11 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Button;
 
-import butterknife.BindView;
+import com.makbeard.logoped.model.TaleModel;
+import com.makbeard.logoped.model.TalePart;
+
+import java.util.LinkedList;
+
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -44,6 +50,7 @@ public class MainActivity extends AppCompatActivity implements Const {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
         ButterKnife.bind(this);
 
 
@@ -125,10 +132,36 @@ public class MainActivity extends AppCompatActivity implements Const {
                 break;
         }
 
-    }
+/*    @OnClick(R.id.testPlayer)
+    public void startPlayerActivity() {*/
 
+        // Make some dummy data for test
+        LinkedList<TalePart> taleParts = new LinkedList<>();
+        taleParts.add(new TalePart(
+                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_1, null).toString(),
+                "Жили-были...",
+                ""
+        ));
+        taleParts.add(new TalePart(
+                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_2, null).toString(),
+                "...водку пили...",
+                ""
+        ));
+        taleParts.add(new TalePart(
+                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_3, null).toString(),
+                "...морду били...",
+                ""
+        ));
+        taleParts.add(new TalePart(
+                ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_4, null).toString(),
+                "...так и прожили.",
+                ""
+        ));
 
-}
+        TaleModel tale = new TaleModel(
+                "Сказка про алкашей",
+                ResourcesCompat.getDrawable(getResources(), R.drawable.udach_rybalka_1, null).toString(),
+                taleParts);
 
 
 /*    @OnClick(R.id.play_button)
@@ -139,3 +172,6 @@ public class MainActivity extends AppCompatActivity implements Const {
     }*/
 
 
+/*        startActivity(TalePlayer.makeIntent(this, tale));
+    }*/
+}

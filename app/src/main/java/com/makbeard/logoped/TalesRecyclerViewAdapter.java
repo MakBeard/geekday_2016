@@ -48,17 +48,20 @@ public class TalesRecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(TalesViewHolder holder, int position) {
-        holder.mTaleNameTextView.setText(mDataList.get(position).getName());
+       // holder.mTaleNameTextView.setText(mDataList.get(position).getName());
+        holder.mTaleNameTextView.setText("Находчивый мышонок");
         if (!mDataList.get(position).getImageLink().equals("")) {
             Glide
                     .with(mContext)
-                    .load(mDataList.get(position).getImageLink())
+              //      .load(mDataList.get(position).getImageLink())
+                    .load(R.drawable.nahod_mishonok_2)
                     .into(holder.mTaleImageView);
         } else {
 
             Glide
                     .with(mContext)
-                    .load("https://img-fotki.yandex.ru/get/5111/2839712.33/0_14bfb3_737f575d_orig")
+                  //  .load(mDataList.get(position).getImageLink())
+                    .load(R.drawable.nahod_mishonok_2)
                     .into(holder.mTaleImageView);
             /*Picasso
                     .with(mContext)
