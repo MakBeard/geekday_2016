@@ -19,6 +19,7 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
+import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Button;
 
@@ -43,6 +44,8 @@ public class MainActivity extends AppCompatActivity implements Const {
 
     @BindView(R.id.enter_button)
     Button enter_button;
+    @BindView(R.id.main_activity)
+    RelativeLayout relativeLayout;
     private String[] chooseChild;
     private String[] chooseDoctor;
     private AudioManager am;
@@ -63,13 +66,13 @@ public class MainActivity extends AppCompatActivity implements Const {
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         //test
-        play = (Button) findViewById(R.id.play_button);
-        assert play != null;
+      //  play = (Button) findViewById(R.id.play_button);
+      /*  assert play != null;
         play.setOnClickListener(v -> {
             Log.d("happy", "Player enable");
             TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
             taleAudioPlayer.playExm(v.getContext());
-        });
+        });*/
 
 //выпадающие списки детей и врачей
 
@@ -108,10 +111,12 @@ public class MainActivity extends AppCompatActivity implements Const {
             switch (checkedId) {
                 case R.id.radiobutton1:
                     spinner.setAdapter(adapterDoctors);
+                    relativeLayout.setBackgroundResource(R.drawable.activity_main_background1);
                     chooseSomething = 1;
                     break;
                 case R.id.radiobutton2:
                     spinner.setAdapter(adapterChild);
+                    relativeLayout.setBackgroundResource(R.drawable.activity_main_background2);
                     chooseSomething = 2;
             }
         });
