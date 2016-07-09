@@ -11,19 +11,14 @@
         <activity android:name=".SplashActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
         <activity
-            android:name=".TaleCreatingActivity"/>
-        <activity
-            android:name=".TalePlayer"
-            android:configChanges="orientation|keyboardHidden|screenSize"
-            android:label="@string/title_activity_tale_player"
-            android:theme="@style/FullscreenTheme" />
-        <activity android:name=".MainActivity" />
+            android:name=".TalePlayer"/>
+        <activity android:name=".MainActivity"></activity>
         <activity android:name=".TaleChooserActivity" />
-        <activity android:name=".ListChildActivity"></activity>
     </application>
 
 </manifest>
