@@ -15,7 +15,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_centerVertical="true"
-        android:src="@drawable/splashimagelogo" />
+        android:src="@drawable/splashimagelogo2" />
 
     <TextView
         android:layout_marginTop="5dp"
