@@ -9,20 +9,28 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.makbeard.logoped.MainActivity">
 
-    <EditText
+    <!--<EditText
         android:id="@+id/name_edittext"
         android:layout_centerInParent="true"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:hint="Введи имя"/>
+        android:hint="Введи имя"/>-->
+
+    <Spinner
+        android:id="@+id/name_spinner"
+        android:layout_centerInParent="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+    </Spinner>
 
     <Button
         android:id="@+id/enter_button"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
-        android:layout_below="@id/name_edittext"
-        android:layout_alignLeft="@id/name_edittext"
-        android:layout_alignRight="@id/name_edittext"
+        android:layout_below="@id/name_spinner"
+        android:layout_alignLeft="@id/name_spinner"
+        android:layout_alignRight="@id/name_spinner"
         android:gravity="center"
         android:text="Вперёд"/>
 

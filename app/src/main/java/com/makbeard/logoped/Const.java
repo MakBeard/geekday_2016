@@ -10,4 +10,5 @@ public interface Const {
     String EXTRA_NAME = "EXTRA_NAME";
     int DB_VERSION = 3;
     String DB_NAME = "Tales.db";
+    String EXTRA_CHOOSE="choose";
 }
