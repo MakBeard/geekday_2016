@@ -221,6 +221,9 @@ public class TaleReadPickActivity extends AppCompatActivity {
         if (i == 4) {
             Toast.makeText(this, "Молодец, всё правильно!", Toast.LENGTH_SHORT).show();
             // TODO: 10.07.2016 Добавить переход в Activity диафильма
+            Intent intent = new Intent(this, TalePlayer.class);
+            intent.putExtra(Const.EXTRA_NAME, mTale.getName());
+            startActivity(intent);
         }
     }
 

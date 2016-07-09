@@ -5,6 +5,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.support.v4.content.res.ResourcesCompat;
@@ -20,9 +21,13 @@ import android.widget.TextView;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
+import com.makbeard.logoped.db.DbOpenHelper;
 import com.makbeard.logoped.db.tables.TalesTable;
 import com.makbeard.logoped.model.TaleModel;
+import com.makbeard.logoped.model.TaleModelSQLiteTypeMapping;
 import com.makbeard.logoped.model.TalePart;
+import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
+import com.pushtorefresh.storio.sqlite.queries.Query;
 
 import java.lang.reflect.Type;
 import java.util.LinkedList;
@@ -47,6 +52,7 @@ public class TalePlayer extends AppCompatActivity {
     private int animationDuration;
     private LinkedList<TalePart> taleParts;
     private int partIndex = 0;
+    private DefaultStorIOSQLite mDefaultStorIOSQLite;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,6 +61,14 @@ public class TalePlayer extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        String taleName = getIntent().getStringExtra(Const.EXTRA_NAME);
+
+        SQLiteOpenHelper sqLiteOpenHelper = new DbOpenHelper(this);
+        mDefaultStorIOSQLite = DefaultStorIOSQLite.builder()
+                .sqliteOpenHelper(sqLiteOpenHelper)
+                .addTypeMapping(TaleModel.class, new TaleModelSQLiteTypeMapping())
+                .build();
+        /*
         Gson gson = new Gson();
         Type type = new TypeToken<TaleModel>() {
         }.getType();
@@ -62,6 +76,8 @@ public class TalePlayer extends AppCompatActivity {
                 getIntent().getExtras().getString(EXTRA_KEY),
                 type
         );
+        */
+        tale = loadTaleFromDb(taleName);
         taleParts = tale.getTaleParts();
 
         animationDuration = getResources().getInteger(
@@ -117,5 +133,24 @@ public class TalePlayer extends AppCompatActivity {
         String taleString = gson.toJson(taleModel);
         intent.putExtra(EXTRA_KEY, taleString);
         return intent;
+    }
+
+
+    /**
+     * Метод возвращает по имени Tale из БД
+     * @return объекты Tale
+     */
+    private TaleModel loadTaleFromDb(String taleName) {
+        return mDefaultStorIOSQLite
+                .get()
+                .object(TaleModel.class)
+                .withQuery(
+                        Query.builder()
+                                .table(TalesTable.TABLE_TALE)
+                                .where("name = ?")
+                                .whereArgs(taleName)
+                                .build())
+                .prepare()
+                .executeAsBlocking();
     }
 }
