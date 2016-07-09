@@ -26,6 +26,7 @@ import com.makbeard.logoped.model.TalePart;
 
 import java.util.LinkedList;
 
+import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 
@@ -136,7 +137,7 @@ public class MainActivity extends AppCompatActivity implements Const {
     public void startPlayerActivity() {*/
 
         // Make some dummy data for test
-        LinkedList<TalePart> taleParts = new LinkedList<>();
+/*        LinkedList<TalePart> taleParts = new LinkedList<>();
         taleParts.add(new TalePart(
                 ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_1, null).toString(),
                 "Жили-были...",
@@ -161,7 +162,7 @@ public class MainActivity extends AppCompatActivity implements Const {
         TaleModel tale = new TaleModel(
                 "Сказка про алкашей",
                 ResourcesCompat.getDrawable(getResources(), R.drawable.udach_rybalka_1, null).toString(),
-                taleParts);
+                taleParts);*/
 
 
 /*    @OnClick(R.id.play_button)
@@ -174,4 +175,5 @@ public class MainActivity extends AppCompatActivity implements Const {
 
 /*        startActivity(TalePlayer.makeIntent(this, tale));
     }*/
+    }
 }

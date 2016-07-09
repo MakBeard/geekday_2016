@@ -66,10 +66,10 @@
         android:layout_alignParentEnd="true"
         android:text="Play" />
 
-    <Button
+   <!-- <Button
         android:id="@+id/testPlayer"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
-        android:text="Test Player"/>
+        android:text="Test Player"/>-->
 
 </RelativeLayout>
