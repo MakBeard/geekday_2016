@@ -18,7 +18,7 @@ import butterknife.OnClick;
  * Стартовая Activity приложения
  * Created 09.07.2016.
  */
-public class MainActivity extends AppCompatActivity implements Const{
+public class MainActivity extends AppCompatActivity implements Const {
 
     private String[] chooseChild;
     private String[] chooseDoctor;
@@ -39,18 +39,21 @@ public class MainActivity extends AppCompatActivity implements Const{
                 Log.d("happy", "Player enable");
                 TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
                 taleAudioPlayer.playExm(v.getContext());
+            }
 
 
-        final Spinner spinner = (Spinner)findViewById(R.id.name_spinner);
+            });
 
-        final ArrayAdapter<?>adapterChild=
-                ArrayAdapter.createFromResource(this,R.array.child,android.R.layout.simple_spinner_item);
+
+        final Spinner spinner = (Spinner) findViewById(R.id.name_spinner);
+
+        final ArrayAdapter<?> adapterChild =
+                ArrayAdapter.createFromResource(this, R.array.child, android.R.layout.simple_spinner_item);
         adapterChild.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         final ArrayAdapter<?> adapterDoctors =
                 ArrayAdapter.createFromResource(this, R.array.doctors, android.R.layout.simple_spinner_item);
         adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-
 
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
@@ -67,13 +70,11 @@ public class MainActivity extends AppCompatActivity implements Const{
         });
 
 
-
-
-        RadioGroup radioGroup=(RadioGroup)findViewById(R.id.radiogroup);
+        RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId){
+                switch (checkedId) {
                     case R.id.radiobutton1:
                         spinner.setAdapter(adapterDoctors);
                         break;
@@ -92,10 +93,17 @@ public class MainActivity extends AppCompatActivity implements Const{
         startActivity(intent);
     }
 
+
+}
+
+
+
+
 /*    @OnClick(R.id.play_button)
     protected void play(){
         Log.d("happy", "Player enable");
         TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
         taleAudioPlayer.playExm(this);
     }*/
-}
+
+

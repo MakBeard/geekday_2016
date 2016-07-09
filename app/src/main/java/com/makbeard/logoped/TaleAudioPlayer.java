@@ -29,7 +29,7 @@ public class TaleAudioPlayer extends MediaPlayer{
 
     public void playExm (Context context) {
 
-        mediaPlayer = MediaPlayer.create(context,R.raw.explosion);
+       // mediaPlayer = MediaPlayer.create(context,R.raw.explosion); нет файла
         mediaPlayer.start();
     }
 }
