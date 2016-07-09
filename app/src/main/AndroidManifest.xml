@@ -11,7 +11,9 @@
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".SplashActivity">
+        <activity
+            android:name=".SplashActivity"
+            android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -22,18 +24,25 @@
             android:name=".TalePlayer"
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_tale_player"
+            android:screenOrientation="landscape"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".MainActivity" />
-        <activity android:name=".TaleCreatingActivity" />
-        <activity android:name=".ListChildActivity" />
+        <activity
+            android:name=".MainActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".TaleCreatingActivity"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".ListChildActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".TaleChooserActivity"
             android:label="Выберите сказку"
             android:screenOrientation="landscape" />
         <activity
             android:name=".TaleReadPickActivity"
-            android:screenOrientation="landscape"
-            android:parentActivityName=".TaleChooserActivity"/>
+            android:parentActivityName=".TaleChooserActivity"
+            android:screenOrientation="landscape" />
     </application>
 
 </manifest>
