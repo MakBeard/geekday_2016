@@ -22,8 +22,8 @@
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".MainActivity"></activity>
         <activity android:name=".TaleChooserActivity"
-            android:screenOrientation="landscape"/>
-
+            android:screenOrientation="landscape"
+            android:label="Выберите сказку"></activity>
     </application>
 
 </manifest>
