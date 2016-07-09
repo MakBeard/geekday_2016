@@ -53,13 +53,13 @@ public class TalesRecyclerViewAdapter
         holder.mTaleNameTextView.setText(mDataList.get(position).getName());
         if (!mDataList.get(position).getImageLink().equals("")) {
             // TODO: 09.07.2016 Разобраться с тормозами ленты  
-            Glide
+           /* Glide
                     .with(mContext)
                     .load(new File(Uri.parse(mDataList.get(position).getImageLink()).getPath()))
                     .centerCrop()
-                    .into(holder.mTaleImageView);
+                    .into(holder.mTaleImageView);*/
 
-            //holder.mTaleImageView.setImageURI(Uri.parse(mDataList.get(position).getImageLink()));
+            holder.mTaleImageView.setImageURI(Uri.parse(mDataList.get(position).getImageLink()));
         }
     }
 
