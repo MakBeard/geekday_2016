@@ -18,7 +18,8 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_red_dark">
+                android:background="#7fe67f"
+                >
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -54,7 +55,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_orange_dark">
+                android:background="#66e166">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image_part2_imageview"
@@ -80,7 +81,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_blue_light">
+                android:background="#4cdc4c">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image_part3_imageview"
@@ -106,7 +107,7 @@
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="@android:color/holo_green_light">
+                android:background="#32d732">
 
                 <com.makeramen.roundedimageview.RoundedImageView
                     android:id="@+id/image_part4_imageview"
