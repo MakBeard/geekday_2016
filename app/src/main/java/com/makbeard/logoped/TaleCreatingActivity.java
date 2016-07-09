@@ -37,7 +37,7 @@ public class TaleCreatingActivity extends AppCompatActivity implements IFilePick
     private static final int TALEPART_AUDIO_CHOOSER = 1;
     private static final int TALEPART_IMAGE_CHOOSER = 2;
     private static final String TAG = TaleCreatingActivity.class.getSimpleName();
-    private Uri mTaleImageURI;
+    private Uri mTaleImageURI=Uri.EMPTY;
     private int mAdapterPostitionForUpdate;
 
     @BindView(R.id.tale_creator_recyclerview)
