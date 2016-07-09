@@ -58,8 +58,13 @@ public class TalesRecyclerViewAdapter
                     .load(new File(Uri.parse(mDataList.get(position).getImageLink()).getPath()))
                     .centerCrop()
                     .into(holder.mTaleImageView);*/
+            Uri uri = Uri.parse(mDataList.get(position).getImageLink());
+//            if (uri.toString().contains("file:///android_asset/")) {
+//                holder.mTaleImageView.setImageDrawable(ResourcesCompat.getDrawable(getResources(), R.drawable.nahod_mishonok_3, null).toString());
+//            } else {
+            holder.mTaleImageView.setImageURI(uri);
 
-            holder.mTaleImageView.setImageURI(Uri.parse(mDataList.get(position).getImageLink()));
+//            holder.mTaleImageView.setImageURI(Uri.parse(mDataList.get(position).getImageLink()));
         }
     }
 
