@@ -70,5 +70,7 @@ final ArrayAdapter adapter=
     @OnClick(R.id.buttonlistchild)
     protected void OnClickAddTale(){
         startActivity(new Intent(ListChildActivity.this,TaleCreatingActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
     }
 }
