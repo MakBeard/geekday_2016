@@ -21,7 +21,9 @@
             android:label="@string/title_activity_tale_player"
             android:theme="@style/FullscreenTheme" />
         <activity android:name=".MainActivity"></activity>
-        <activity android:name=".TaleChooserActivity"></activity>
+        <activity android:name=".TaleChooserActivity"
+            android:screenOrientation="landscape"/>
+
     </application>
 
 </manifest>
