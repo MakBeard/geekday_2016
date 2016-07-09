@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements Const {
 
         //test
         play = (Button) findViewById(R.id.play_button);
+        assert play != null;
         play.setOnClickListener(v -> {
             Log.d("happy", "Player enable");
             TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
@@ -83,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements Const {
         adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
+        assert spinner != null;
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -101,6 +103,7 @@ public class MainActivity extends AppCompatActivity implements Const {
        /* radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
             public void onCheckedChanged(RadioGroup group, int checkedId) {*/
+        assert radioGroup != null;
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
                 case R.id.radiobutton1:

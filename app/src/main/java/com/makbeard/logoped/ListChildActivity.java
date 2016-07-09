@@ -37,6 +37,7 @@ public class ListChildActivity extends AppCompatActivity {
 final ArrayAdapter adapter=
         ArrayAdapter.createFromResource(this,R.array.child,android.R.layout.simple_list_item_1);
 
+        assert listView != null;
         listView.setAdapter(adapter);
 
 
