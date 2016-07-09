@@ -105,11 +105,14 @@ public class MainActivity extends AppCompatActivity implements Const {
                 Intent intent = new Intent(this, ListChildActivity.class);
                 intent.putExtra(EXTRA_CHOOSE, chooseChild);
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
             case 2:
                 Intent intent1 = new Intent(this, TaleChooserActivity.class);
                 intent1.putExtra(EXTRA_CHOOSE, chooseChild);
                 startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
                 break;
         }
 
