@@ -12,6 +12,8 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Button;
 
+import butterknife.BindView;
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -20,15 +22,20 @@ import butterknife.OnClick;
  */
 public class MainActivity extends AppCompatActivity implements Const {
 
+    @BindView(R.id.enter_button)
+    Button enter_button;
     private String[] chooseChild;
     private String[] chooseDoctor;
     private AudioManager am;
     private Button play;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ButterKnife.bind(this);
+
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         //test
@@ -42,8 +49,9 @@ public class MainActivity extends AppCompatActivity implements Const {
             }
 
 
-            });
+        });
 
+//выпадающие списки детей и врачей
 
         final Spinner spinner = (Spinner) findViewById(R.id.name_spinner);
 
@@ -69,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements Const {
             }
         });
 
-
+//переключатель между списками
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
