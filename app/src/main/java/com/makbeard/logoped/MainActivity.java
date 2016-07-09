@@ -7,6 +7,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.media.AudioManager;
+import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.content.res.Resources;
@@ -24,6 +25,8 @@ import android.widget.Button;
 import com.makbeard.logoped.model.TaleModel;
 import com.makbeard.logoped.model.TalePart;
 
+import java.io.File;
+import java.io.FileOutputStream;
 import java.util.LinkedList;
 
 import butterknife.BindView;
@@ -51,6 +54,8 @@ public class MainActivity extends AppCompatActivity implements Const {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        doFileOperationsWrapper();
 
         ButterKnife.bind(this);
 
@@ -114,6 +119,47 @@ public class MainActivity extends AppCompatActivity implements Const {
         });
 
     }
+
+
+    private void doFileOperationsWrapper() {
+
+        // если прав нет
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, P)) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Необходимо предоставить доступ в память для добавления сказок")
+                    .setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // здесь мы запросим права
+                            makeRequest();
+                        }
+                    })
+                    .setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // нам здесь делать нечего
+                            new AlertDialog.Builder(MainActivity.this)
+                                    .setMessage("Добавление сказок не будет работать корректно")
+                                    .create()
+                                    .show();
+                        }
+                    })
+                    .create()
+                    .show();
+
+            return; // сказали пользователю все, пусть решает
+
+        }
+
+        // просто запрашиваем права
+        makeRequest();
+    }
+
+    private void makeRequest() {
+        ActivityCompat.requestPermissions(this, new String[]{P}, 22);
+    }
+
 
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
