@@ -20,6 +20,8 @@ import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 import com.pushtorefresh.storio.sqlite.queries.Query;
 
 import java.util.List;
+import java.util.Random;
+import java.util.concurrent.ThreadLocalRandom;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -97,34 +99,37 @@ public class TaleReadPickActivity extends AppCompatActivity {
             ImageView imageView3 = (ImageView) alertDialog.findViewById(R.id.image3);
             ImageView imageView4 = (ImageView) alertDialog.findViewById(R.id.image4);
 
+            int[] partsNumbersArray = { 0, 1, 2, 3 };
+            shuffleArray(partsNumbersArray);
+
             if (imageView1 != null) {
-                imageView1.setImageURI(Uri.parse(mTale.getTaleParts().get(0).getImageLink()));
+                imageView1.setImageURI(Uri.parse(mTale.getTaleParts().get(partsNumbersArray[0]).getImageLink()));
                 imageView1.setOnClickListener(v -> {
-                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(0).getImageLink()));
+                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(partsNumbersArray[0]).getImageLink()));
                     alertDialog.dismiss();
                 });
             }
 
             if (imageView2 != null) {
-                imageView2.setImageURI(Uri.parse(mTale.getTaleParts().get(1).getImageLink()));
+                imageView2.setImageURI(Uri.parse(mTale.getTaleParts().get(partsNumbersArray[1]).getImageLink()));
                 imageView2.setOnClickListener(v -> {
-                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(1).getImageLink()));
+                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(partsNumbersArray[1]).getImageLink()));
                     alertDialog.dismiss();
                 });
             }
 
             if (imageView3 != null) {
-                imageView3.setImageURI(Uri.parse(mTale.getTaleParts().get(2).getImageLink()));
+                imageView3.setImageURI(Uri.parse(mTale.getTaleParts().get(partsNumbersArray[2]).getImageLink()));
                 imageView3.setOnClickListener(v -> {
-                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(2).getImageLink()));
+                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(partsNumbersArray[2]).getImageLink()));
                     alertDialog.dismiss();
                 });
             }
 
             if (imageView4 != null) {
-                imageView4.setImageURI(Uri.parse(mTale.getTaleParts().get(3).getImageLink()));
+                imageView4.setImageURI(Uri.parse(mTale.getTaleParts().get(partsNumbersArray[3]).getImageLink()));
                 imageView4.setOnClickListener(v -> {
-                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(3).getImageLink()));
+                    setImageToImageView(partNumber, Uri.parse(mTale.getTaleParts().get(partsNumbersArray[3]).getImageLink()));
                     alertDialog.dismiss();
                 });
             }
@@ -175,4 +180,18 @@ public class TaleReadPickActivity extends AppCompatActivity {
                 .executeAsBlocking();
     }
 
+    // Implementing Fisher–Yates shuffle
+    static void shuffleArray(int[] ar)
+    {
+        // If running on Java 6 or older, use `new Random()` on RHS here
+        Random rnd = ThreadLocalRandom.current();
+        for (int i = ar.length - 1; i > 0; i--)
+        {
+            int index = rnd.nextInt(i + 1);
+            // Simple swap
+            int a = ar[index];
+            ar[index] = ar[i];
+            ar[i] = a;
+        }
+    }
 }
