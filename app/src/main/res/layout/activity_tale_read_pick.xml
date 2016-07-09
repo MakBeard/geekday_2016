@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.makbeard.logoped.TaleReadPickActivity">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <RelativeLayout
+                android:background="@android:color/holo_red_dark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_part1_imageview"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/nahod_mishonok_1"/>
+
+                <TextView
+                    android:id="@+id/text_part1_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@id/image_part1_imageview"
+                    android:layout_alignBottom="@id/image_part1_imageview"
+                    android:layout_toStartOf="@+id/image_part1_imageview" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:background="@android:color/holo_orange_dark"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_part2_imageview"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/nahod_mishonok_1"/>
+
+                <TextView
+                    android:id="@+id/text_part2_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@id/image_part2_imageview"
+                    android:layout_alignBottom="@id/image_part2_imageview"
+                    android:layout_toStartOf="@+id/image_part2_imageview" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:background="@android:color/holo_blue_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_part3_imageview"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/nahod_mishonok_1"/>
+
+                <TextView
+                    android:id="@+id/text_part3_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@id/image_part3_imageview"
+                    android:layout_alignBottom="@id/image_part3_imageview"
+                    android:layout_toStartOf="@+id/image_part3_imageview" />
+
+            </RelativeLayout>
+
+            <RelativeLayout
+                android:background="@android:color/holo_green_light"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <ImageView
+                    android:id="@+id/image_part4_imageview"
+                    android:layout_width="150dp"
+                    android:layout_height="150dp"
+                    android:layout_alignParentRight="true"
+                    android:src="@drawable/nahod_mishonok_1"/>
+
+                <TextView
+                    android:id="@+id/text_part4_textview"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_alignTop="@id/image_part4_imageview"
+                    android:layout_alignBottom="@id/image_part4_imageview"
+                    android:layout_toStartOf="@+id/image_part4_imageview" />
+
+            </RelativeLayout>
+
+        </LinearLayout>
+
+    </ScrollView>
+
+</RelativeLayout>

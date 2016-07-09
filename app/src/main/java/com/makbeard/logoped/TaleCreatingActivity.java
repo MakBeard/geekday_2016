@@ -159,7 +159,7 @@ public class TaleCreatingActivity extends AppCompatActivity implements IFilePick
         }
         return mockLinkedList;
     }
-
+//sdf
     /**
      * Callback метод из адаптера для выбора картинки или аудио
      * @param positition позиция в адаптере

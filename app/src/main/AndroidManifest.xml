@@ -23,13 +23,17 @@
             android:configChanges="orientation|keyboardHidden|screenSize"
             android:label="@string/title_activity_tale_player"
             android:theme="@style/FullscreenTheme" />
-        <activity android:name=".MainActivity"></activity>
-        <activity android:name=".TaleCreatingActivity"></activity>
-        <activity android:name=".ListChildActivity"></activity>
-        <activity android:name=".TaleChooserActivity"
-            android:parentActivityName=".MainActivity"
+        <activity android:name=".MainActivity" />
+        <activity android:name=".TaleCreatingActivity" />
+        <activity android:name=".ListChildActivity" />
+        <activity
+            android:name=".TaleChooserActivity"
+            android:label="Выберите сказку"
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".TaleReadPickActivity"
             android:screenOrientation="landscape"
-            android:label="Выберите сказку"></activity>
+            android:parentActivityName=".TaleChooserActivity"/>
     </application>
 
 </manifest>
