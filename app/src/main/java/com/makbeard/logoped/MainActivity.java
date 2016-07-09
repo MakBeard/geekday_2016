@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 
+import butterknife.ButterKnife;
 import butterknife.OnClick;
 
 /**
@@ -17,12 +18,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        //test
+        ButterKnife.bind(this);
     }
 
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
-        Intent intent = new Intent(this, TaleChooserActivity.class);
+        Intent intent = new Intent(this, TaleCreatingActivity.class);
         startActivity(intent);
     }
 }
