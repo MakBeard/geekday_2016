@@ -6,4 +6,5 @@
     <string name="choose">Выбрать</string>
     <string name="enter_text">Введите текст</string>
     <string name="save">Сохранить</string>
+    <string name="tale_saved">Рассказ сохранён</string>
 </resources>
