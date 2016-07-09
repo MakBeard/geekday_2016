@@ -9,6 +9,7 @@ import android.support.v7.widget.RecyclerView;
 import com.makbeard.logoped.db.DbOpenHelper;
 import com.makbeard.logoped.db.tables.TalesTable;
 import com.makbeard.logoped.model.TaleModel;
+import com.makbeard.logoped.model.TaleModelSQLiteTypeMapping;
 import com.makbeard.logoped.model.TalePart;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 import com.pushtorefresh.storio.sqlite.queries.Query;
