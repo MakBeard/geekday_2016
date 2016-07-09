@@ -1,13 +1,16 @@
 package com.makbeard.logoped;
 
 import android.content.Intent;
+import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.RadioGroup;
 import android.widget.Spinner;
+import android.widget.Button;
 
 import butterknife.OnClick;
 
@@ -19,11 +22,23 @@ public class MainActivity extends AppCompatActivity implements Const{
 
     private String[] chooseChild;
     private String[] chooseDoctor;
+    private AudioManager am;
+    private Button play;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        am = (AudioManager) getSystemService(AUDIO_SERVICE);
+
+        //test
+        play = (Button) findViewById(R.id.play_button);
+        play.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Log.d("happy", "Player enable");
+                TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
+                taleAudioPlayer.playExm(v.getContext());
 
 
         final Spinner spinner = (Spinner)findViewById(R.id.name_spinner);
@@ -53,6 +68,7 @@ public class MainActivity extends AppCompatActivity implements Const{
 
 
 
+
         RadioGroup radioGroup=(RadioGroup)findViewById(R.id.radiogroup);
         radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
@@ -75,4 +91,11 @@ public class MainActivity extends AppCompatActivity implements Const{
         intent.putExtra(EXTRA_CHOOSE, chooseChild);
         startActivity(intent);
     }
+
+/*    @OnClick(R.id.play_button)
+    protected void play(){
+        Log.d("happy", "Player enable");
+        TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
+        taleAudioPlayer.playExm(this);
+    }*/
 }
