@@ -5,4 +5,5 @@
         android:icon="@drawable/ic_arrow_back_black_24dp"
         android:showAsAction="always|collapseActionView"
         android:title="Выберите сказку" />
+
 </menu>

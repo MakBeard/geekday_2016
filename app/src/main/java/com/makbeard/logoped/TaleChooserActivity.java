@@ -1,10 +1,12 @@
 package com.makbeard.logoped;
 
+
 import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 
 import com.makbeard.logoped.db.DbOpenHelper;
@@ -37,6 +39,14 @@ public class TaleChooserActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tale_chooser);
         ButterKnife.bind(this);
+
+        Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
+        toolbar.getBackground().setAlpha(0);
+        toolbar.setNavigationIcon(R.drawable.ic_arrow_back_black_24dp);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+
+
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         gridLayoutManager.supportsPredictiveItemAnimations();
@@ -114,6 +124,7 @@ public class TaleChooserActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_tale_chooser_activity,menu);
+        getSupportActionBar().setHomeButtonEnabled(true);
         return true;
     }
 }
