@@ -92,11 +92,10 @@ public class TalesRecyclerViewAdapter
             // TODO: 09.07.2016 Обработать нажатие на сказку
             Log.d(TAG, "OnClickCardview: " + mDataList.get(getAdapterPosition()).getName());
             Log.d(TAG, "OnClickCardview: " + mDataList.get(getAdapterPosition()).getImageLink());
-            /*
-            Intent intent = new Intent(mContext, TalePlayerActivity.class);
+
+            Intent intent = new Intent(mContext, TaleReadPickActivity.class);
             intent.putExtra(Const.EXTRA_NAME, mDataList.get(getAdapterPosition()).getName());
             mContext.startActivity(intent);
-            */
         }
     }
 }
