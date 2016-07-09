@@ -1,5 +1,6 @@
 package com.makbeard.logoped;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.media.AudioManager;
 import android.support.v7.app.AppCompatActivity;
@@ -28,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements Const {
     private String[] chooseDoctor;
     private AudioManager am;
     private Button play;
+    private int chooseSomething;
 
 
     @Override
@@ -85,9 +87,11 @@ public class MainActivity extends AppCompatActivity implements Const {
                 switch (checkedId) {
                     case R.id.radiobutton1:
                         spinner.setAdapter(adapterDoctors);
+                        chooseSomething=1;
                         break;
                     case R.id.radiobutton2:
                         spinner.setAdapter(adapterChild);
+                        chooseSomething=2;
                 }
             }
         });
@@ -96,9 +100,19 @@ public class MainActivity extends AppCompatActivity implements Const {
 
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
-        Intent intent = new Intent(this, TaleChooserActivity.class);
-        intent.putExtra(EXTRA_CHOOSE, chooseChild);
-        startActivity(intent);
+        switch (chooseSomething){
+            case 1:
+                Intent intent = new Intent(this, ListChildActivity.class);
+                intent.putExtra(EXTRA_CHOOSE, chooseChild);
+                startActivity(intent);
+                break;
+            case 2:
+                Intent intent1 = new Intent(this, TaleChooserActivity.class);
+                intent1.putExtra(EXTRA_CHOOSE, chooseChild);
+                startActivity(intent1);
+                break;
+        }
+
     }
 
 
