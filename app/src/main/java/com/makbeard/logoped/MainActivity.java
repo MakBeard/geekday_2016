@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.RadioGroup;
 import android.widget.Spinner;
 
 import butterknife.OnClick;
@@ -16,7 +17,8 @@ import butterknife.OnClick;
  */
 public class MainActivity extends AppCompatActivity implements Const{
 
-    private String[] choose;
+    private String[] chooseChild;
+    private String[] chooseDoctor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,18 +26,23 @@ public class MainActivity extends AppCompatActivity implements Const{
         setContentView(R.layout.activity_main);
 
 
-        Spinner spinner = (Spinner)findViewById(R.id.name_spinner);
+        final Spinner spinner = (Spinner)findViewById(R.id.name_spinner);
 
-        ArrayAdapter<?> adapter =
-                ArrayAdapter.createFromResource(this, R.array.child, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        final ArrayAdapter<?>adapterChild=
+                ArrayAdapter.createFromResource(this,R.array.child,android.R.layout.simple_spinner_item);
+        adapterChild.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
-        spinner.setAdapter(adapter);
+        final ArrayAdapter<?> adapterDoctors =
+                ArrayAdapter.createFromResource(this, R.array.doctors, android.R.layout.simple_spinner_item);
+        adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+
 
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                choose = getResources().getStringArray(R.array.child);
+                chooseChild = getResources().getStringArray(R.array.child);
+                chooseDoctor = getResources().getStringArray(R.array.doctors);
             }
 
             @Override
@@ -44,12 +51,28 @@ public class MainActivity extends AppCompatActivity implements Const{
             }
         });
 
+
+
+        RadioGroup radioGroup=(RadioGroup)findViewById(R.id.radiogroup);
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                switch (checkedId){
+                    case R.id.radiobutton1:
+                        spinner.setAdapter(adapterDoctors);
+                        break;
+                    case R.id.radiobutton2:
+                        spinner.setAdapter(adapterChild);
+                }
+            }
+        });
+
     }
 
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
         Intent intent = new Intent(this, TaleChooserActivity.class);
-        intent.putExtra(EXTRA_CHOOSE,choose);
+        intent.putExtra(EXTRA_CHOOSE, chooseChild);
         startActivity(intent);
     }
 }

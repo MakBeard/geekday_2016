@@ -16,22 +16,41 @@
         android:layout_height="wrap_content"
         android:hint="Введи имя"/>-->
 
-    <Spinner
-        android:id="@+id/name_spinner"
-        android:layout_centerInParent="true"
+    <RadioGroup
+        android:id="@+id/radiogroup"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
 
-    </Spinner>
+        <RadioButton
+            android:id="@+id/radiobutton1"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Доктор" />
+
+        <RadioButton
+            android:id="@+id/radiobutton2"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="Пациент" />
+
+    </RadioGroup>
+
+    <Spinner
+        android:layout_below="@id/radiogroup"
+        android:id="@+id/name_spinner"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"></Spinner>
 
     <Button
         android:id="@+id/enter_button"
         android:layout_width="wrap_content"
         android:layout_height="36dp"
         android:layout_below="@id/name_spinner"
-        android:layout_alignLeft="@id/name_spinner"
-        android:layout_alignRight="@id/name_spinner"
-        android:gravity="center"
-        android:text="Вперёд"/>
+        android:text="Вперёд" />
 
 </RelativeLayout>

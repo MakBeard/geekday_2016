@@ -10,4 +10,10 @@
         <item>Ребенок №2</item>
         <item>Ребенок №3</item>
     </string-array>
+
+    <string-array name="doctors">
+        <item>Доктор №1</item>
+        <item>Доктор №2</item>
+        <item>Доктор №3</item>
+    </string-array>
 </resources>
