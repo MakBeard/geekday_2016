@@ -3,22 +3,29 @@ package com.makbeard.logoped;
 import android.content.Intent;
 import android.content.res.AssetManager;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.net.Uri;
 import android.os.Handler;
 import android.os.Message;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.makbeard.logoped.db.DbOpenHelper;
 import com.makbeard.logoped.model.TaleModel;
 import com.makbeard.logoped.model.TaleModelSQLiteTypeMapping;
+import com.makbeard.logoped.model.TalePart;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 
 import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
 
@@ -79,6 +86,11 @@ public class SplashActivity extends AppCompatActivity {
                 jsonString,
                 type
         );
+        tale.setImageLink(copyAsset(tale.getImageLink()).toString());
+
+        for (int i = 0; i<tale.getTaleParts().size(); i++) {
+            tale.getTaleParts().get(i).setImageLink(copyAsset(tale.getTaleParts().get(i).getImageLink()).toString());
+        }
 
         mDefaultStorIOSQLite
                 .put()
@@ -101,6 +113,52 @@ public class SplashActivity extends AppCompatActivity {
 //        mImage.setImageDrawable(d);
 
 
+    }
+
+    private Uri copyAsset(String filename) {
+        AssetManager assetManager = getAssets();
+
+
+        if (filename != null) {
+            InputStream in = null;
+            OutputStream out = null;
+            File outFile = new File(getExternalFilesDir(null), filename);
+
+            try {
+                in = assetManager.open(filename);
+                out = new FileOutputStream(outFile);
+                copyFile(in, out);
+            } catch(IOException e) {
+                Log.e("tag", "Failed to copy asset file: " + filename, e);
+            }
+            finally {
+                if (in != null) {
+                    try {
+                        in.close();
+                    } catch (IOException e) {
+                        // NOOP
+                    }
+                }
+                if (out != null) {
+                    try {
+                        out.close();
+                    } catch (IOException e) {
+                        // NOOP
+                    }
+                }
+                return Uri.fromFile(outFile);
+            }
+        }
+
+        return null;
+    }
+
+    private void copyFile(InputStream in, OutputStream out) throws IOException {
+        byte[] buffer = new byte[1024];
+        int read;
+        while((read = in.read(buffer)) != -1){
+            out.write(buffer, 0, read);
+        }
     }
 
     private String loadJSONFileFromAssets(String jsonFile) {
