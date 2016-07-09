@@ -10,6 +10,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.makbeard.logoped.TaleChooserActivity">
 
+
     <android.support.v7.widget.RecyclerView
         android:id="@+id/tales_recyclerview"
         android:layout_width="match_parent"
