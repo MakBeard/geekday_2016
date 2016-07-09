@@ -1,8 +1,14 @@
 package com.makbeard.logoped;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -22,6 +28,8 @@ import butterknife.OnClick;
  * Created 09.07.2016.
  */
 public class MainActivity extends AppCompatActivity implements Const {
+    public static final String P = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 
     @BindView(R.id.enter_button)
     Button enter_button;
@@ -37,6 +45,7 @@ public class MainActivity extends AppCompatActivity implements Const {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
+
 
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
 
@@ -87,11 +96,11 @@ public class MainActivity extends AppCompatActivity implements Const {
                 switch (checkedId) {
                     case R.id.radiobutton1:
                         spinner.setAdapter(adapterDoctors);
-                        chooseSomething=1;
+                        chooseSomething = 1;
                         break;
                     case R.id.radiobutton2:
                         spinner.setAdapter(adapterChild);
-                        chooseSomething=2;
+                        chooseSomething = 2;
                 }
             }
         });
@@ -100,7 +109,7 @@ public class MainActivity extends AppCompatActivity implements Const {
 
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
-        switch (chooseSomething){
+        switch (chooseSomething) {
             case 1:
                 Intent intent = new Intent(this, ListChildActivity.class);
                 intent.putExtra(EXTRA_CHOOSE, chooseChild);
@@ -120,8 +129,6 @@ public class MainActivity extends AppCompatActivity implements Const {
 
 
 }
-
-
 
 
 /*    @OnClick(R.id.play_button)
