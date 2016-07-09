@@ -11,11 +11,8 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.makbeard.logoped.R;
 import com.makbeard.logoped.model.TaleModel;
 
-import java.io.File;
 import java.util.ArrayList;
 import java.util.List;
 
