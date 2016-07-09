@@ -24,7 +24,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/nahod_mishonok_1"/>
+                    android:src="@drawable/splashimagelogo"/>
 
                 <TextView
                     android:id="@+id/text_part1_textview"
@@ -47,7 +47,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/nahod_mishonok_1"/>
+                    android:src="@drawable/splashimagelogo"/>
 
                 <TextView
                     android:id="@+id/text_part2_textview"
@@ -70,7 +70,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/nahod_mishonok_1"/>
+                    android:src="@drawable/splashimagelogo"/>
 
                 <TextView
                     android:id="@+id/text_part3_textview"
@@ -93,7 +93,7 @@
                     android:layout_width="150dp"
                     android:layout_height="150dp"
                     android:layout_alignParentRight="true"
-                    android:src="@drawable/nahod_mishonok_1"/>
+                    android:src="@drawable/splashimagelogo"/>
 
                 <TextView
                     android:id="@+id/text_part4_textview"
