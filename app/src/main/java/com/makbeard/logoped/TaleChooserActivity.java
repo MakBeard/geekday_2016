@@ -65,9 +65,9 @@ public class TaleChooserActivity extends AppCompatActivity {
                 .build();
 
         //-----------------------Тестирование-------------------------------------------------------
-        for (TaleModel tale : getMockTales()) {
+/*        for (TaleModel tale : getMockTales()) {
             putTaleToDb(tale);
-        }
+        }*/
         //------------------------------------------------------------------------------------------
         adapter.swap(loadTalesFromDb());
     }

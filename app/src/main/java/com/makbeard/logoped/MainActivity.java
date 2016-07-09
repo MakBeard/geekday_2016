@@ -1,8 +1,17 @@
 package com.makbeard.logoped;
 
+import android.Manifest;
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.media.AudioManager;
+import android.os.Environment;
+import android.support.v4.app.ActivityCompat;
+import android.support.v4.content.ContextCompat;
+import android.content.res.Resources;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -13,6 +22,13 @@ import android.widget.RadioGroup;
 import android.widget.Spinner;
 import android.widget.Button;
 
+import com.makbeard.logoped.model.TaleModel;
+import com.makbeard.logoped.model.TalePart;
+
+import java.io.File;
+import java.io.FileOutputStream;
+import java.util.LinkedList;
+
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
@@ -22,6 +38,8 @@ import butterknife.OnClick;
  * Created 09.07.2016.
  */
 public class MainActivity extends AppCompatActivity implements Const {
+    public static final String P = Manifest.permission.WRITE_EXTERNAL_STORAGE;
+
 
     @BindView(R.id.enter_button)
     Button enter_button;
@@ -36,21 +54,21 @@ public class MainActivity extends AppCompatActivity implements Const {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        doFileOperationsWrapper();
+
         ButterKnife.bind(this);
+
 
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         //test
         play = (Button) findViewById(R.id.play_button);
-        play.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Log.d("happy", "Player enable");
-                TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
-                taleAudioPlayer.playExm(v.getContext());
-            }
-
-//test
+        assert play != null;
+        play.setOnClickListener(v -> {
+            Log.d("happy", "Player enable");
+            TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
+            taleAudioPlayer.playExm(v.getContext());
         });
 
 //выпадающие списки детей и врачей
@@ -66,6 +84,7 @@ public class MainActivity extends AppCompatActivity implements Const {
         adapterDoctors.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
 
+        assert spinner != null;
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
@@ -81,26 +100,69 @@ public class MainActivity extends AppCompatActivity implements Const {
 
 //переключатель между списками
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+       /* radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {
-                switch (checkedId) {
-                    case R.id.radiobutton1:
-                        spinner.setAdapter(adapterDoctors);
-                        chooseSomething=1;
-                        break;
-                    case R.id.radiobutton2:
-                        spinner.setAdapter(adapterChild);
-                        chooseSomething=2;
-                }
+            public void onCheckedChanged(RadioGroup group, int checkedId) {*/
+        assert radioGroup != null;
+        radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
+            switch (checkedId) {
+                case R.id.radiobutton1:
+                    spinner.setAdapter(adapterDoctors);
+                    chooseSomething = 1;
+                    break;
+                case R.id.radiobutton2:
+                    spinner.setAdapter(adapterChild);
+                    chooseSomething = 2;
             }
         });
 
     }
 
+
+    private void doFileOperationsWrapper() {
+
+        // если прав нет
+
+        if (ActivityCompat.shouldShowRequestPermissionRationale(this, P)) {
+            new AlertDialog.Builder(this)
+                    .setMessage("Необходимо предоставить доступ в память для добавления сказок")
+                    /*.setPositiveButton("Ок", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {
+                            // здесь мы запросим права*/
+                    .setPositiveButton("Ок", (dialog, which) -> {
+                        // здесь мы запросим права
+                        makeRequest();
+                    })
+                    /*.setNegativeButton("Нет", new DialogInterface.OnClickListener() {
+                        @Override
+                        public void onClick(DialogInterface dialog, int which) {*/
+                    .setNegativeButton("Нет", (dialog, which) -> {
+                        // нам здесь делать нечего
+                        new AlertDialog.Builder(MainActivity.this)
+                                .setMessage("Добавление сказок не будет работать корректно")
+                                .create()
+                                .show();
+                    })
+                    .create()
+                    .show();
+
+            return; // сказали пользователю все, пусть решает
+
+        }
+
+        // просто запрашиваем права
+        makeRequest();
+    }
+
+    private void makeRequest() {
+        ActivityCompat.requestPermissions(this, new String[]{P}, 22);
+    }
+
+
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
-        switch (chooseSomething){
+        switch (chooseSomething) {
             case 1:
                 Intent intent = new Intent(this, ListChildActivity.class);
                 intent.putExtra(EXTRA_CHOOSE, chooseChild);
@@ -116,11 +178,6 @@ public class MainActivity extends AppCompatActivity implements Const {
                 break;
         }
 
-    }
-
-
-}
-
 
 
 
@@ -130,5 +187,9 @@ public class MainActivity extends AppCompatActivity implements Const {
         TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
         taleAudioPlayer.playExm(this);
     }*/
+
+
+    }
+}
 
 

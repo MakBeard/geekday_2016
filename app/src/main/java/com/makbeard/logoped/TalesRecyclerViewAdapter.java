@@ -2,15 +2,15 @@ package com.makbeard.logoped;
 
 import android.content.Context;
 import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.bumptech.glide.Glide;
-import com.makbeard.logoped.R;
 import com.makbeard.logoped.model.TaleModel;
 
 import java.util.ArrayList;
@@ -48,27 +48,18 @@ public class TalesRecyclerViewAdapter
 
     @Override
     public void onBindViewHolder(TalesViewHolder holder, int position) {
-       // holder.mTaleNameTextView.setText(mDataList.get(position).getName());
-        holder.mTaleNameTextView.setText("Находчивый мышонок");
+        holder.mTaleNameTextView.setText(mDataList.get(position).getName());
         if (!mDataList.get(position).getImageLink().equals("")) {
+            // TODO: 09.07.2016 Разобраться с тормозами ленты  
+/*
             Glide
                     .with(mContext)
-              //      .load(mDataList.get(position).getImageLink())
-                    .load(R.drawable.nahod_mishonok_2)
+                    .load(new File(Uri.parse(mDataList.get(position).getImageLink()).getPath()))
+                    .centerCrop()
                     .into(holder.mTaleImageView);
-        } else {
+*/
 
-            Glide
-                    .with(mContext)
-                  //  .load(mDataList.get(position).getImageLink())
-                    .load(R.drawable.nahod_mishonok_2)
-                    .into(holder.mTaleImageView);
-            /*Picasso
-                    .with(mContext)
-                    .load(R.drawable.placeholder)
-                   // .resize(220,250)
-                    .into(holder.mTaleImageView);*/
-
+            holder.mTaleImageView.setImageURI(Uri.parse(mDataList.get(position).getImageLink()));
         }
     }
 
@@ -99,6 +90,8 @@ public class TalesRecyclerViewAdapter
         @OnClick(R.id.tale_cardview)
         protected void OnClickCardview() {
             // TODO: 09.07.2016 Обработать нажатие на сказку
+            Log.d(TAG, "OnClickCardview: " + mDataList.get(getAdapterPosition()).getName());
+            Log.d(TAG, "OnClickCardview: " + mDataList.get(getAdapterPosition()).getImageLink());
             /*
             Intent intent = new Intent(mContext, TalePlayerActivity.class);
             intent.putExtra(Const.EXTRA_NAME, mDataList.get(getAdapterPosition()).getName());
