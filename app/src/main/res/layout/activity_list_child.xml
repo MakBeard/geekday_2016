@@ -13,5 +13,11 @@
         android:id="@+id/listview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
+    <Button
+        android:layout_below="@id/listview"
+        android:text="Добавление сказки"
+        android:id="@+id/buttonlistchild"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>
