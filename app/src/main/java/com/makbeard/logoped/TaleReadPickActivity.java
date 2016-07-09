@@ -1,5 +1,6 @@
 package com.makbeard.logoped;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
 import android.support.v7.app.AlertDialog;

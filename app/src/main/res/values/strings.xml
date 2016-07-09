@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">logoped</string>
+    <string name="app_name">Логопед</string>
     <string name="tale_name">Название рассказа</string>
     <string name="enter_tale_name">Введите название рассказа</string>
     <string name="audio_not_selected">Не выбран аудиофайл</string>
@@ -19,8 +19,8 @@
     </string-array>
 
     <string-array name="doctors">
-        <item>Доктор №1</item>
-        <item>Доктор №2</item>
-        <item>Доктор №3</item>
+        <item>Доктор House</item>
+        <item>Доктор Cox</item>
+        <item>Доктор JD</item>
     </string-array>
 </resources>
