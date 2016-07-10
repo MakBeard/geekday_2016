@@ -100,7 +100,7 @@ public class TalePlayer extends AppCompatActivity {
 
 
             textView.setText(part.getText());
-//            imageView.setImageURI(Uri.parse(part.getImageLink()));
+            imageView.setImageURI(Uri.parse(part.getImageLink()));
 
             // fade in
             slideView.animate()
