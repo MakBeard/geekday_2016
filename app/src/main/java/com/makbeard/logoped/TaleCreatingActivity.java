@@ -1,5 +1,6 @@
 package com.makbeard.logoped;
 
+import android.app.ActionBar;
 import android.app.Activity;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -59,6 +60,9 @@ public class TaleCreatingActivity extends AppCompatActivity implements IFilePick
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tale_creating);
+
+        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
+        getSupportActionBar().setCustomView(R.layout.actionbar_layout);
 
         ButterKnife.bind(this);
 
