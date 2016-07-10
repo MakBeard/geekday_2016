@@ -1,5 +1,6 @@
 package com.makbeard.logoped;
 
+import android.app.ActionBar;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
@@ -35,6 +36,7 @@ public class TaleTextActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tale_text);
+
 
         ButterKnife.bind(this);
 
