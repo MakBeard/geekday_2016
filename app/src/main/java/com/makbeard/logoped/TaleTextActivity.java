@@ -67,6 +67,7 @@ public class TaleTextActivity extends AppCompatActivity {
         Intent intent = new Intent(this, TaleReadPickActivity.class);
         intent.putExtra(Const.EXTRA_NAME, mTale.getName());
         startActivity(intent);
+        overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
     }
 
     /**

@@ -46,6 +46,7 @@ public class ListChildActivity extends AppCompatActivity {
                 Intent intent = new Intent(this, DetailStatisticActivity.class);
                 intent.putExtra(Const.EXTRA_CHILD_NAME, adapter.getItem(position).toString());
                 startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
             });
         }
 
