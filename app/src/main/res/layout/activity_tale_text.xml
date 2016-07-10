@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.makbeard.logoped.TaleTextActivity">
+
+    <TextView
+        android:id="@+id/tale_textview"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_read_button"
+        android:layout_alignParentTop="true" />
+
+    <Button
+        android:id="@+id/text_read_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Прочитал"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

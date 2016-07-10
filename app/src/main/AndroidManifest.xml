@@ -2,8 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.makbeard.logoped">
 
-    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"></uses-permission>
-    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"></uses-permission>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
 
     <application
         android:allowBackup="true"
@@ -38,12 +38,16 @@
         <activity
             android:name=".TaleChooserActivity"
             android:label="Выберите сказку"
-            android:screenOrientation="landscape"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
+            android:screenOrientation="landscape" />
         <activity
             android:name=".TaleReadPickActivity"
-            android:parentActivityName=".TaleChooserActivity"
+            android:parentActivityName=".TaleTextActivity"
             android:screenOrientation="landscape" />
+        <activity
+            android:name=".TaleTextActivity"
+            android:parentActivityName=".TaleChooserActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>
