@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.widget.TextView;
 
 import com.makbeard.logoped.db.DbOpenHelper;
@@ -20,6 +21,7 @@ import butterknife.OnClick;
 
 public class TaleTextActivity extends AppCompatActivity {
 
+    private static final String TAG = TaleTextActivity.class.getSimpleName();
     private DefaultStorIOSQLite mDefaultStorIOSQLite;
     private TaleModel mTale;
 
@@ -35,6 +37,8 @@ public class TaleTextActivity extends AppCompatActivity {
 
         String taleName = getIntent().getStringExtra(Const.EXTRA_NAME);
 
+        setTitle(taleName);
+
         SQLiteOpenHelper sqLiteOpenHelper = new DbOpenHelper(this);
         mDefaultStorIOSQLite = DefaultStorIOSQLite.builder()
                 .sqliteOpenHelper(sqLiteOpenHelper)
@@ -45,7 +49,7 @@ public class TaleTextActivity extends AppCompatActivity {
 
         StringBuilder stringBuilder = new StringBuilder();
         for (TalePart talePart : mTale.getTaleParts()) {
-            stringBuilder.append(talePart.getText() + " ");
+            stringBuilder.append(talePart.getText()).append(" ");
         }
 
         mTaleTextView.setText(stringBuilder.toString());

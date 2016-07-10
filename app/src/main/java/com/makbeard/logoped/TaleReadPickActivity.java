@@ -10,6 +10,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -77,6 +78,7 @@ public class TaleReadPickActivity extends AppCompatActivity {
         ButterKnife.bind(this);
 
         String taleName = getIntent().getStringExtra(Const.EXTRA_NAME);
+        setTitle(taleName);
 
         SQLiteOpenHelper sqLiteOpenHelper = new DbOpenHelper(this);
         mDefaultStorIOSQLite = DefaultStorIOSQLite.builder()
@@ -85,10 +87,6 @@ public class TaleReadPickActivity extends AppCompatActivity {
                 .build();
 
         mTale = loadTaleFromDb(taleName);
-
-        for (TalePart talePart : mTale.getTaleParts()) {
-            Log.d(TAG, "onCreate: " + talePart.getImageLink());
-        }
 
         mPart1TextView.setText(mTale.getTaleParts().get(0).getText());
         mPart2TextView.setText(mTale.getTaleParts().get(1).getText());
@@ -99,14 +97,7 @@ public class TaleReadPickActivity extends AppCompatActivity {
         mImage2ImageView.setOnClickListener(v -> pickImage(1));
         mImage3ImageView.setOnClickListener(v -> pickImage(2));
         mImage4ImageView.setOnClickListener(v -> pickImage(3));
-
-        Log.d(TAG, "onCreate: " + mTale.toString());
-
-
-
     }
-
-
 
     private void pickImage(int partNumber) {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
