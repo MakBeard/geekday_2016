@@ -245,9 +245,9 @@ public class TaleReadPickActivity extends AppCompatActivity {
         if (i == 4) {
             Toast.makeText(this, getString(R.string.all_right), Toast.LENGTH_SHORT).show();
 
-            long timeSpent = System.currentTimeMillis() - mStartTime;
+           /* long timeSpent = System.currentTimeMillis() - mStartTime;
             saveStatisticsToDb(
-                    new ReadStatisticModel("Вася", mTale.getName(), timeSpent, mWrongAttemps));
+                    new ReadStatisticModel("Вася", mTale.getName(), timeSpent, mWrongAttemps));*/
 
             // TODO: 10.07.2016 Добавить переход в Activity диафильма
             Intent intent = new Intent(this, TalePlayer.class);
