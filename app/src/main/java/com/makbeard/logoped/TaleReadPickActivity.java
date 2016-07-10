@@ -17,6 +17,7 @@ import com.makbeard.logoped.db.DbOpenHelper;
 import com.makbeard.logoped.db.tables.TalesTable;
 import com.makbeard.logoped.model.TaleModel;
 import com.makbeard.logoped.model.TaleModelSQLiteTypeMapping;
+import com.makbeard.logoped.model.TalePart;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 import com.pushtorefresh.storio.sqlite.queries.Query;
 
@@ -82,6 +83,10 @@ public class TaleReadPickActivity extends AppCompatActivity {
                 .build();
 
         mTale = loadTaleFromDb(taleName);
+
+        for (TalePart talePart : mTale.getTaleParts()) {
+            Log.d(TAG, "onCreate: " + talePart.getImageLink());
+        }
 
         mPart1TextView.setText(mTale.getTaleParts().get(0).getText());
         mPart2TextView.setText(mTale.getTaleParts().get(1).getText());

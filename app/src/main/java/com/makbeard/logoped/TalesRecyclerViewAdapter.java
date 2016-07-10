@@ -94,11 +94,8 @@ public class TalesRecyclerViewAdapter
 
         @OnClick(R.id.tale_cardview)
         protected void OnClickCardview() {
-            // TODO: 09.07.2016 Обработать нажатие на сказку
-            Log.d(TAG, "OnClickCardview: " + mDataList.get(getAdapterPosition()).getName());
-            Log.d(TAG, "OnClickCardview: " + mDataList.get(getAdapterPosition()).getImageLink());
 
-            Intent intent = new Intent(mContext, TaleReadPickActivity.class);
+            Intent intent = new Intent(mContext, TaleTextActivity.class);
             intent.putExtra(Const.EXTRA_NAME, mDataList.get(getAdapterPosition()).getName());
             mContext.startActivity(intent);
         }
