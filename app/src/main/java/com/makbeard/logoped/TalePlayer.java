@@ -147,6 +147,9 @@ public class TalePlayer extends AppCompatActivity {
                     });
         } else {
             // go to another activity
+            startActivity(new Intent(TalePlayer.this, TaleChooserActivity.class));
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
         }
 
     }
