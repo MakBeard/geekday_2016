@@ -33,7 +33,7 @@ import java.util.LinkedList;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
-
+//sss
 /**
  * Стартовая Activity приложения
  * Created 09.07.2016.
