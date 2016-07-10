@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "955583935769",
+    "firebase_url": "https://geekday-2016.firebaseio.com",
+    "project_id": "geekday-2016",
+    "storage_bucket": "geekday-2016.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:955583935769:android:a3f24b7b28e20a78",
+        "android_client_info": {
+          "package_name": "com.makbeard.logoped"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "955583935769-510mm6pkeaosnn64in10pma07tlqiht3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAlvXh5ImDrQlxx6xP_SHunhc98C11eJfo"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
