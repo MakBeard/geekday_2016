@@ -63,6 +63,8 @@ public class TalePlayer extends AppCompatActivity {
 
         String taleName = getIntent().getStringExtra(Const.EXTRA_NAME);
 
+        setTitle(taleName);
+
         SQLiteOpenHelper sqLiteOpenHelper = new DbOpenHelper(this);
         mDefaultStorIOSQLite = DefaultStorIOSQLite.builder()
                 .sqliteOpenHelper(sqLiteOpenHelper)

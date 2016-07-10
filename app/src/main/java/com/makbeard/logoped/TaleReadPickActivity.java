@@ -162,24 +162,28 @@ public class TaleReadPickActivity extends AppCompatActivity {
         switch (partNumber) {
             case 0:
                 mImage1ImageView.setImageURI(imageUri);
+                mImage1ImageView.setBackground(null);
                 isImage1Choosen = true;
                 mChoosenImage1 = imageUri.toString();
                 isAllImagesPick();
                 break;
             case 1:
                 mImage2ImageView.setImageURI(imageUri);
+                mImage2ImageView.setBackground(null);
                 isImage2Choosen = true;
                 mChoosenImage2 = imageUri.toString();
                 isAllImagesPick();
                 break;
             case 2:
                 mImage3ImageView.setImageURI(imageUri);
+                mImage3ImageView.setBackground(null);
                 isImage3Choosen = true;
                 mChoosenImage3 = imageUri.toString();
                 isAllImagesPick();
                 break;
             case 3:
                 mImage4ImageView.setImageURI(imageUri);
+                mImage4ImageView.setBackground(null);
                 isImage4Choosen = true;
                 mChoosenImage4 = imageUri.toString();
                 isAllImagesPick();
@@ -202,24 +206,28 @@ public class TaleReadPickActivity extends AppCompatActivity {
     private void checkCorrectAnswers() {
         int i = 0;
         if (mChoosenImage1.equals(mTale.getTaleParts().get(0).getImageLink())) {
-
             Log.d(TAG, "checkCorrectAnswers: 1 правильно ");
             i++;
+        } else {
+            mImage1ImageView.setBackground(getDrawable(R.drawable.border));
         }
         if (mChoosenImage2.equals(mTale.getTaleParts().get(1).getImageLink())) {
-
             Log.d(TAG, "checkCorrectAnswers: 2 правильно ");
             i++;
+        } else {
+            mImage2ImageView.setBackground(getDrawable(R.drawable.border));
         }
         if (mChoosenImage3.equals(mTale.getTaleParts().get(2).getImageLink())) {
-
             Log.d(TAG, "checkCorrectAnswers: 3 правильно ");
             i++;
+        } else {
+            mImage3ImageView.setBackground(getDrawable(R.drawable.border));
         }
         if (mChoosenImage4.equals(mTale.getTaleParts().get(3).getImageLink())) {
-
             Log.d(TAG, "checkCorrectAnswers: 4 правильно ");
             i++;
+        } else {
+            mImage4ImageView.setBackground(getDrawable(R.drawable.border));
         }
         if (i == 4) {
             Toast.makeText(this, "Молодец, всё правильно!", Toast.LENGTH_SHORT).show();
