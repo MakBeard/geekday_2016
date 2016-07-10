@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -19,6 +20,7 @@ import butterknife.OnClick;
 
 public class ListChildActivity extends AppCompatActivity {
 
+    private static final String TAG = ListChildActivity.class.getSimpleName();
     private ArrayAdapter<String> adapter;
     private String selectedItem;
     private final Context context = this;
@@ -32,24 +34,31 @@ public class ListChildActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
-
-
-
         ListView listView = (ListView) findViewById(R.id.listview);
 
-final ArrayAdapter adapter=
-        ArrayAdapter.createFromResource(this,R.array.child,android.R.layout.simple_list_item_1);
+        final ArrayAdapter adapter=
+                ArrayAdapter.createFromResource(this, R.array.child, android.R.layout.simple_list_item_1);
 
-        assert listView != null;
-        listView.setAdapter(adapter);
+        if (listView != null) {
+            listView.setAdapter(adapter);
+
+            listView.setOnItemClickListener((parent, view, position, id) -> {
+                Intent intent = new Intent(this, DetailStatisticActivity.class);
+                intent.putExtra(Const.EXTRA_CHILD_NAME, adapter.getItem(position).toString());
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            });
+        }
 
 
-        AdapterView.OnItemLongClickListener itemLongClickListener = new AdapterView.OnItemLongClickListener() {
+        /*
+        AdapterView.OnItemLongClickListener itemLongClickListener
+                = new AdapterView.OnItemLongClickListener() {
             @Override
             public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
                 selectedItem = parent.getItemAtPosition(position).toString();
                 AlertDialog.Builder builder = new AlertDialog.Builder(context);
-                builder.setMessage("Вы действительно хотите удалить"+selectedItem+"?" );
+                builder.setMessage("Вы действительно хотите удалить" + selectedItem + "?" );
                 builder.setCancelable(false);
                 builder.setPositiveButton("Да", new DialogInterface.OnClickListener() {
                     @Override
@@ -68,6 +77,7 @@ final ArrayAdapter adapter=
                 return true;
             }
         };
+        */
     }
 
     @OnClick(R.id.buttonlistchild)

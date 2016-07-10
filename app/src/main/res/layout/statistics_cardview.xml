@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.v7.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="60dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tale_name"
+            android:id="@+id/textView"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:id="@+id/tale_name_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="tale_name_textview"
+            android:paddingLeft="10dp"
+            android:layout_toEndOf="@id/textView" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/time_spent"
+            android:layout_alignParentBottom="true"
+            android:layout_alignEnd="@+id/textView"
+            android:id="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/time_spent_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="time_spent"
+            android:paddingLeft="10dp"
+            android:layout_alignParentBottom="true"
+            android:layout_toEndOf="@+id/textView3" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/wrong_attemps"
+            android:id="@+id/textView2"
+            android:layout_centerVertical="true"
+            android:layout_alignStart="@+id/textView3" />
+
+        <TextView
+            android:id="@+id/wrong_attemps_textview"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="wrong_attemps"
+            android:paddingLeft="10dp"
+            android:layout_centerVertical="true"
+            android:layout_toEndOf="@+id/textView2" />
+
+
+    </RelativeLayout>
+
+</android.support.v7.widget.CardView>

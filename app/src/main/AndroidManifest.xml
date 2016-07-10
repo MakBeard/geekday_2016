@@ -35,6 +35,7 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".ListChildActivity"
+            android:parentActivityName=".MainActivity"/>
             android:theme="@style/AppTheme"
             android:screenOrientation="landscape" />
         <activity
@@ -52,7 +53,10 @@
             android:name=".TaleTextActivity"
             android:theme="@style/AppTheme"
             android:parentActivityName=".TaleChooserActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".DetailStatisticActivity"
+            android:parentActivityName=".ListChildActivity"/>
     </application>
 
 </manifest>
