@@ -8,7 +8,7 @@ package com.makbeard.logoped;
  */
 public interface Const {
     String EXTRA_NAME = "EXTRA_NAME";
-    int DB_VERSION = 4;
+    int DB_VERSION = 6;
     String DB_NAME = "Tales.db";
     String EXTRA_CHOOSE="choose";
     String MIME_TYPE_IMAGE = "image/*";

@@ -28,6 +28,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStream;
 import java.io.UnsupportedEncodingException;
 import java.lang.reflect.Type;
+import java.util.LinkedList;
 
 public class SplashActivity extends AppCompatActivity {
 
@@ -88,16 +89,19 @@ public class SplashActivity extends AppCompatActivity {
         );
         tale.setImageLink(copyAsset(tale.getImageLink()).toString());
 
-        for (int i = 0; i<tale.getTaleParts().size(); i++) {
-            tale.getTaleParts().get(i).setImageLink(copyAsset(tale.getTaleParts().get(i).getImageLink()).toString());
+        LinkedList<TalePart> parts = tale.getTaleParts();
+        for (int i = 0; i<parts.size(); i++) {
+            TalePart part = parts.get(i);
+            part.setImageLink(copyAsset(tale.getImageLink()).toString());
+            parts.set(i,part);
         }
+        tale.setTaleParts(parts);
 
         mDefaultStorIOSQLite
                 .put()
                 .object(tale)
                 .prepare()
                 .executeAsBlocking();
-
 
 //        // get input stream
 //        InputStream ims = null;

@@ -14,7 +14,7 @@ import java.util.LinkedList;
  * Класс представляет абстрактный тип данных - детский рассказ
  *
  * @author D.Makarov
- * Created 09.07.2016.
+ *         Created 09.07.2016.
  */
 
 @StorIOSQLiteType(table = TalesTable.TABLE_TALE)
@@ -61,12 +61,19 @@ public class TaleModel {
         this.imageLink = imageLink;
     }
 
+    public void setTaleParts(LinkedList<TalePart> taleParts) {
+        Gson gson = new Gson();
+        talePartsString = gson.toJson(taleParts);
+    }
+
     public LinkedList<TalePart> getTaleParts() {
         //Десиарелизуем список частей рассказа
         Gson gson = new Gson();
-        Type type = new TypeToken<LinkedList<TalePart>>(){}.getType();
+        Type type = new TypeToken<LinkedList<TalePart>>() {
+        }.getType();
         return gson.fromJson(talePartsString, type);
     }
+
 
     @Override
     public String toString() {
