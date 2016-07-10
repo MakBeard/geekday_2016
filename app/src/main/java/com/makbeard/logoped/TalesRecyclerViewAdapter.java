@@ -98,6 +98,7 @@ public class TalesRecyclerViewAdapter
             Intent intent = new Intent(mContext, TaleTextActivity.class);
             intent.putExtra(Const.EXTRA_NAME, mDataList.get(getAdapterPosition()).getName());
             mContext.startActivity(intent);
+            //mContext.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         }
     }
 }
