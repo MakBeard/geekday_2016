@@ -38,7 +38,7 @@ public class TaleAudioPlayer extends MediaPlayer{
 
     public void playExm (Context context) {
 
-        mediaPlayer = MediaPlayer.create(context,R.raw.udach_rybalka_1);
+      //  mediaPlayer = MediaPlayer.create(context,R.raw.udach_rybalka_1);
         mediaPlayer.start();
     }
 }

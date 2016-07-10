@@ -35,7 +35,7 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".ListChildActivity"
-            android:parentActivityName=".MainActivity"/>
+            android:parentActivityName=".MainActivity"
             android:theme="@style/AppTheme"
             android:screenOrientation="landscape" />
         <activity
@@ -56,7 +56,8 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".DetailStatisticActivity"
-            android:parentActivityName=".ListChildActivity"/>
+            android:parentActivityName=".ListChildActivity"
+            android:screenOrientation="landscape"/>
     </application>
 
 </manifest>

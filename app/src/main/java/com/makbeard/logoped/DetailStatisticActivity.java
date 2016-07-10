@@ -38,6 +38,8 @@ public class DetailStatisticActivity extends AppCompatActivity {
 
         ButterKnife.bind(this);
 
+        recyclerView.setBackgroundColor(getResources().getColor(R.color.back));
+
         String childName = getIntent().getStringExtra(Const.EXTRA_CHILD_NAME);
 
         setTitle(childName);
@@ -57,6 +59,7 @@ public class DetailStatisticActivity extends AppCompatActivity {
 
         recyclerView.setLayoutManager(linearLayoutManager);
         recyclerView.setAdapter(statisticRecyclerViewAdapter);
+
 
         LinkedList<ReadStatisticModel> statisticList = new LinkedList<>(loadStatisticForChildFromDb(childName));
 
