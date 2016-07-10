@@ -8,6 +8,7 @@ import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
+import android.widget.RelativeLayout;
 
 import com.makbeard.logoped.db.DbOpenHelper;
 import com.makbeard.logoped.db.tables.TalesTable;
@@ -34,13 +35,17 @@ public class TaleChooserActivity extends AppCompatActivity {
     RecyclerView mTaleRecyclerView;
     private DefaultStorIOSQLite mDefaultStorIOSQLite;
 
+    @BindView(R.id.relativelayoutchooser)
+    RelativeLayout relativeLayout;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tale_chooser);
-
         ButterKnife.bind(this);
 
+
+        relativeLayout.setBackgroundColor(getResources().getColor(R.color.back));
         /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.getBackground().setAlpha(0);

@@ -15,6 +15,8 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -41,9 +43,8 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements Const {
     public static final String P = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-
-    @BindView(R.id.enter_button)
-    Button enter_button;
+   /* @BindView(R.id.enter_button)
+    Button enter_button;*/
     @BindView(R.id.main_activity)
     RelativeLayout relativeLayout;
     private String[] chooseChild;
@@ -76,7 +77,7 @@ public class MainActivity extends AppCompatActivity implements Const {
 
 //выпадающие списки детей и врачей
 
-        final Spinner spinner = (Spinner) findViewById(R.id.name_spinner);
+ /*       final Spinner spinner = (Spinner) findViewById(R.id.name_spinner);
 
         final ArrayAdapter<?> adapterChild =
                 ArrayAdapter.createFromResource(this, R.array.child, android.R.layout.simple_spinner_item);
@@ -103,9 +104,9 @@ public class MainActivity extends AppCompatActivity implements Const {
 
 //переключатель между списками
         RadioGroup radioGroup = (RadioGroup) findViewById(R.id.radiogroup);
-       /* radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+       *//* radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
             @Override
-            public void onCheckedChanged(RadioGroup group, int checkedId) {*/
+            public void onCheckedChanged(RadioGroup group, int checkedId) {*//*
         assert radioGroup != null;
         radioGroup.setOnCheckedChangeListener((group, checkedId) -> {
             switch (checkedId) {
@@ -119,7 +120,7 @@ public class MainActivity extends AppCompatActivity implements Const {
                     relativeLayout.setBackgroundResource(R.drawable.activity_main_background2);
                     chooseSomething = 2;
             }
-        });
+        });*/
 
     }
 
@@ -165,12 +166,12 @@ public class MainActivity extends AppCompatActivity implements Const {
     }
 
 
-    @OnClick(R.id.enter_button)
+/*    @OnClick(R.id.enter_button)
     protected void onClickEnter() {
         switch (chooseSomething) {
             case 1:
                 Intent intent = new Intent(this, ListChildActivity.class);
-                intent.putExtra(EXTRA_CHOOSE, chooseChild);
+                intent.putExtra(EXTRA_CHOOSE, chooseDoctor);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
@@ -186,14 +187,43 @@ public class MainActivity extends AppCompatActivity implements Const {
 
 
 
-/*    @OnClick(R.id.play_button)
+*//*    @OnClick(R.id.play_button)
     protected void play(){
         Log.d("happy", "Player enable");
         TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
         taleAudioPlayer.playExm(this);
+    }*//*
+
+
     }*/
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main_activity,menu);
+        getSupportActionBar().setHomeButtonEnabled(true);
+        return true;
+    }
 
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()){
+            case R.id.action_doctor:
+                    Intent intent = new Intent(this, ListChildActivity.class);
+                intent.putExtra(EXTRA_CHOOSE, chooseDoctor);
+                startActivity(intent);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                break;
+            case R.id.action_child:
+                Intent intent1 = new Intent(this, TaleChooserActivity.class);
+                intent1.putExtra(EXTRA_CHOOSE, chooseChild);
+                startActivity(intent1);
+                overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+                break;
+
+
+        }
+
+        return super.onOptionsItemSelected(item);
     }
 }
 

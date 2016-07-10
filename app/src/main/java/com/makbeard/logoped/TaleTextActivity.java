@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 import com.makbeard.logoped.db.DbOpenHelper;
@@ -27,6 +28,8 @@ public class TaleTextActivity extends AppCompatActivity {
 
     @BindView(R.id.tale_textview)
     TextView mTaleTextView;
+    @BindView(R.id.relativelayouttaletext)
+    RelativeLayout relativeLayout;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +37,8 @@ public class TaleTextActivity extends AppCompatActivity {
         setContentView(R.layout.activity_tale_text);
 
         ButterKnife.bind(this);
+
+        relativeLayout.setBackgroundColor(getResources().getColor(R.color.back));
 
         String taleName = getIntent().getStringExtra(Const.EXTRA_NAME);
 
