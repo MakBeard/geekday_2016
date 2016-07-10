@@ -1,5 +1,6 @@
 package com.makbeard.logoped;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
@@ -97,8 +98,9 @@ public class TalesRecyclerViewAdapter
 
             Intent intent = new Intent(mContext, TaleTextActivity.class);
             intent.putExtra(Const.EXTRA_NAME, mDataList.get(getAdapterPosition()).getName());
+            Activity activity=(Activity)mContext;
             mContext.startActivity(intent);
-            //mContext.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            activity.overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
         }
     }
 }
