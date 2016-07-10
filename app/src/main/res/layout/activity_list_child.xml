@@ -15,7 +15,9 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content" />
     <Button
+        style="@style/ButtonText"
         android:layout_below="@id/listview"
+        android:background="@drawable/button_green"
         android:text="Добавление сказки"
         android:id="@+id/buttonlistchild"
         android:layout_width="wrap_content"
