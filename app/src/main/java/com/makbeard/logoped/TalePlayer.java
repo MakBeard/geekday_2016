@@ -58,6 +58,7 @@ public class TalePlayer extends AppCompatActivity {
     private AudioManager am;
     private Context context;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

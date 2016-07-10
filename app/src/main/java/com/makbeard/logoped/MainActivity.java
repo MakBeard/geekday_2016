@@ -69,8 +69,6 @@ public class MainActivity extends AppCompatActivity implements Const {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
-        FirebaseCrash.log("Activity created");
 
         Thread t = new Thread() {
             @Override
