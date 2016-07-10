@@ -8,6 +8,8 @@
     <string name="save">Сохранить</string>
     <string name="tale_saved">Рассказ сохранён</string>
 
+
+
     <string name="title_activity_tale_player">TalePlayer</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">Текст сказки. ооооочень длинный...</string>
