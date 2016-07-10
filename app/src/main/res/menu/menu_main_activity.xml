@@ -7,11 +7,11 @@
         android:showAsAction="always|collapseActionView"
         android:title="СуперБатя" />
 
-    <item
+<!--    <item
         android:id="@+id/action_child"
         android:background="@color/back"
         android:icon="@drawable/ic_arrow_back_black_24dp"
         android:showAsAction="always|collapseActionView"
-        android:title="МелкийШкет" />
+        android:title="МелкийШкет" />-->
 
 </menu>

@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.Drawable;
+import android.media.AudioManager;
 import android.net.Uri;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
@@ -53,6 +54,7 @@ public class TalePlayer extends AppCompatActivity {
     private LinkedList<TalePart> taleParts;
     private int partIndex = 0;
     private DefaultStorIOSQLite mDefaultStorIOSQLite;
+    private AudioManager am;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,6 +62,8 @@ public class TalePlayer extends AppCompatActivity {
         setContentView(R.layout.activity_tale_player);
 
         ButterKnife.bind(this);
+
+        am = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         String taleName = getIntent().getStringExtra(Const.EXTRA_NAME);
 
@@ -108,6 +112,8 @@ public class TalePlayer extends AppCompatActivity {
                             super.onAnimationEnd(animation);
 
                             // playing audio
+                            TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
+                            taleAudioPlayer.playTale(taleParts.get(partIndex));
 
                             // fade out
                             slideView.animate()

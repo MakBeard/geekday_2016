@@ -1,11 +1,13 @@
 package com.makbeard.logoped;
 
 import android.Manifest;
+import android.app.ActionBar;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Environment;
 import android.support.v4.app.ActivityCompat;
@@ -15,6 +17,7 @@ import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Gravity;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
@@ -24,6 +27,7 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.Spinner;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.makbeard.logoped.model.TaleModel;
 import com.makbeard.logoped.model.TalePart;
@@ -43,8 +47,8 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements Const {
     public static final String P = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
-   /* @BindView(R.id.enter_button)
-    Button enter_button;*/
+    @BindView(R.id.enter_button)
+    Button enter_button;
     @BindView(R.id.main_activity)
     RelativeLayout relativeLayout;
     private String[] chooseChild;
@@ -58,6 +62,12 @@ public class MainActivity extends AppCompatActivity implements Const {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+
+
+
+
+
 
         doFileOperationsWrapper();
 
@@ -165,6 +175,12 @@ public class MainActivity extends AppCompatActivity implements Const {
         ActivityCompat.requestPermissions(this, new String[]{P}, 22);
     }
 
+    @OnClick(R.id.enter_button)
+    protected void onClickEnter() {
+        startActivity(new Intent(MainActivity.this,TaleChooserActivity.class));
+        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+    }
+
 
 /*    @OnClick(R.id.enter_button)
     protected void onClickEnter() {
@@ -213,12 +229,12 @@ public class MainActivity extends AppCompatActivity implements Const {
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
                 break;
-            case R.id.action_child:
+            /*case R.id.action_child:
                 Intent intent1 = new Intent(this, TaleChooserActivity.class);
                 intent1.putExtra(EXTRA_CHOOSE, chooseChild);
                 startActivity(intent1);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-                break;
+                break;*/
 
 
         }
