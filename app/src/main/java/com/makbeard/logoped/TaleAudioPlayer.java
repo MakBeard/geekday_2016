@@ -1,9 +1,11 @@
 package com.makbeard.logoped;
 
 import android.app.Activity;
+import android.content.ContentUris;
 import android.content.Context;
 import android.media.AudioManager;
 import android.media.MediaPlayer;
+import android.net.Uri;
 
 import com.makbeard.logoped.model.TalePart;
 
@@ -15,21 +17,28 @@ import java.io.IOException;
 public class TaleAudioPlayer extends MediaPlayer{
 
     private MediaPlayer mediaPlayer;
+    private Context mContext;
+
+    public TaleAudioPlayer(Context context) {
+
+        this.mediaPlayer = MediaPlayer.create(context,R.raw.explosion);
+
+    }
 
     public void playTale (TalePart talePart) {
         try {
-            mediaPlayer.setDataSource(talePart.getAudioLink());
+
+            mediaPlayer = MediaPlayer.create(mContext,Uri.parse(talePart.getAudioLink()));
             mediaPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
-            mediaPlayer.prepare();
             mediaPlayer.start();
-        } catch (IOException e) {
+        } catch (IllegalStateException e) {
             e.printStackTrace();
         }
     }
 
     public void playExm (Context context) {
 
-        mediaPlayer = MediaPlayer.create(context,R.raw.explosion);
+        mediaPlayer = MediaPlayer.create(context,R.raw.udach_rybalka_1);
         mediaPlayer.start();
     }
 }

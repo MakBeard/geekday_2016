@@ -55,11 +55,14 @@ public class TalePlayer extends AppCompatActivity {
     private int partIndex = 0;
     private DefaultStorIOSQLite mDefaultStorIOSQLite;
     private AudioManager am;
+    private Context context;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tale_player);
+
+        context=this;
 
         ButterKnife.bind(this);
 
@@ -112,7 +115,7 @@ public class TalePlayer extends AppCompatActivity {
                             super.onAnimationEnd(animation);
 
                             // playing audio
-                            TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer();
+                            TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer(context);
                             taleAudioPlayer.playTale(taleParts.get(partIndex));
 
                             // fade out
