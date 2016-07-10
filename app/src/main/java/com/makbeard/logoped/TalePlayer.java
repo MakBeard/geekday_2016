@@ -135,6 +135,11 @@ public class TalePlayer extends AppCompatActivity {
                                                     // Next slide
                                                     if (++partIndex < taleParts.size()) {
                                                         play();
+                                                    } else {
+                                                        // go to another activity
+                                                        startActivity(new Intent(TalePlayer.this, TaleChooserActivity.class));
+                                                        overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
+
                                                     }
                                                 }
                                             });
@@ -145,11 +150,6 @@ public class TalePlayer extends AppCompatActivity {
 
                         }
                     });
-        } else {
-            // go to another activity
-            startActivity(new Intent(TalePlayer.this, TaleChooserActivity.class));
-            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
-
         }
 
     }
