@@ -3,6 +3,8 @@ package com.makbeard.logoped;
 import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.net.Uri;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -99,7 +101,12 @@ public class TaleReadPickActivity extends AppCompatActivity {
         mImage4ImageView.setOnClickListener(v -> pickImage(3));
 
         Log.d(TAG, "onCreate: " + mTale.toString());
+
+
+
     }
+
+
 
     private void pickImage(int partNumber) {
         AlertDialog alertDialog = new AlertDialog.Builder(this)
@@ -225,10 +232,15 @@ public class TaleReadPickActivity extends AppCompatActivity {
         }
         if (i == 4) {
             Toast.makeText(this, "Молодец, всё правильно!", Toast.LENGTH_SHORT).show();
+
             // TODO: 10.07.2016 Добавить переход в Activity диафильма
             Intent intent = new Intent(this, TalePlayer.class);
             intent.putExtra(Const.EXTRA_NAME, mTale.getName());
             startActivity(intent);
+            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+        }else {
+            Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_SHORT).show();
+
         }
     }
 
