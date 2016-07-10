@@ -92,6 +92,7 @@ public class SplashActivity extends AppCompatActivity {
         for (int i = 0; i<parts.size(); i++) {
             TalePart part = parts.get(i);
             part.setImageLink(copyAsset(tale.getTaleParts().get(i).getImageLink()).toString());
+            part.setAudioLink(copyAsset(tale.getTaleParts().get(i).getAudioLink()).toString());
             parts.set(i, part);
         }
         tale.setTaleParts(parts);
