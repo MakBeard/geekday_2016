@@ -18,9 +18,12 @@ import android.widget.Toast;
 
 import com.makbeard.logoped.db.DbOpenHelper;
 import com.makbeard.logoped.db.tables.TalesTable;
+import com.makbeard.logoped.model.ReadStatisticModel;
+import com.makbeard.logoped.model.ReadStatisticModelSQLiteTypeMapping;
 import com.makbeard.logoped.model.TaleModel;
 import com.makbeard.logoped.model.TaleModelSQLiteTypeMapping;
 import com.makbeard.logoped.model.TalePart;
+import com.pushtorefresh.storio.sqlite.SQLiteTypeMapping;
 import com.pushtorefresh.storio.sqlite.impl.DefaultStorIOSQLite;
 import com.pushtorefresh.storio.sqlite.queries.Query;
 
@@ -35,6 +38,8 @@ public class TaleReadPickActivity extends AppCompatActivity {
     private static final String TAG = TaleReadPickActivity.class.getSimpleName();
     private DefaultStorIOSQLite mDefaultStorIOSQLite;
     private TaleModel mTale;
+    private long mStartTime;
+    private int mWrongAttemps = 0;
 
     private Boolean isImage1Choosen = false;
     private Boolean isImage2Choosen = false;
@@ -81,12 +86,16 @@ public class TaleReadPickActivity extends AppCompatActivity {
         setTitle(taleName);
 
         SQLiteOpenHelper sqLiteOpenHelper = new DbOpenHelper(this);
+
         mDefaultStorIOSQLite = DefaultStorIOSQLite.builder()
                 .sqliteOpenHelper(sqLiteOpenHelper)
                 .addTypeMapping(TaleModel.class, new TaleModelSQLiteTypeMapping())
+                .addTypeMapping(ReadStatisticModel.class, new ReadStatisticModelSQLiteTypeMapping())
                 .build();
 
         mTale = loadTaleFromDb(taleName);
+
+        mStartTime = System.currentTimeMillis();
 
         mPart1TextView.setText(mTale.getTaleParts().get(0).getText());
         mPart2TextView.setText(mTale.getTaleParts().get(1).getText());
@@ -210,36 +219,43 @@ public class TaleReadPickActivity extends AppCompatActivity {
             i++;
         } else {
             mImage1ImageView.setBackground(getDrawable(R.drawable.border));
+            mWrongAttemps++;
         }
         if (mChoosenImage2.equals(mTale.getTaleParts().get(1).getImageLink())) {
             Log.d(TAG, "checkCorrectAnswers: 2 правильно ");
             i++;
         } else {
             mImage2ImageView.setBackground(getDrawable(R.drawable.border));
+            mWrongAttemps++;
         }
         if (mChoosenImage3.equals(mTale.getTaleParts().get(2).getImageLink())) {
             Log.d(TAG, "checkCorrectAnswers: 3 правильно ");
             i++;
         } else {
             mImage3ImageView.setBackground(getDrawable(R.drawable.border));
+            mWrongAttemps++;
         }
         if (mChoosenImage4.equals(mTale.getTaleParts().get(3).getImageLink())) {
             Log.d(TAG, "checkCorrectAnswers: 4 правильно ");
             i++;
         } else {
             mImage4ImageView.setBackground(getDrawable(R.drawable.border));
+            mWrongAttemps++;
         }
         if (i == 4) {
-            Toast.makeText(this, "Молодец, всё правильно!", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.all_right), Toast.LENGTH_SHORT).show();
+
+            long timeSpent = System.currentTimeMillis() - mStartTime;
+            saveStatisticsToDb(
+                    new ReadStatisticModel("Вася", mTale.getName(), timeSpent, mWrongAttemps));
 
             // TODO: 10.07.2016 Добавить переход в Activity диафильма
             Intent intent = new Intent(this, TalePlayer.class);
             intent.putExtra(Const.EXTRA_NAME, mTale.getName());
             startActivity(intent);
-            overridePendingTransition(R.anim.slide_in_left,R.anim.slide_out_right);
+            overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
         }else {
-            Toast.makeText(this, "Попробуй еще раз!", Toast.LENGTH_SHORT).show();
-
+            Toast.makeText(this, getString(R.string.try_again), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -274,5 +290,17 @@ public class TaleReadPickActivity extends AppCompatActivity {
             ar[index] = ar[i];
             ar[i] = a;
         }
+    }
+
+    /**
+     * Метод сохраняет объект ReadStatisticModel в БД
+     * @param statistic сохраняемый объект
+     */
+    private void saveStatisticsToDb(ReadStatisticModel statistic) {
+        mDefaultStorIOSQLite
+                .put()
+                .object(statistic)
+                .prepare()
+                .executeAsBlocking();
     }
 }

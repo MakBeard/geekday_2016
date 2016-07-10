@@ -5,6 +5,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import com.makbeard.logoped.Const;
+import com.makbeard.logoped.db.tables.StatisticTable;
 import com.makbeard.logoped.db.tables.TalesTable;
 
 /**
@@ -21,6 +22,7 @@ public class DbOpenHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase db) {
         db.execSQL(TalesTable.getCreateTableQuery());
+        db.execSQL(StatisticTable.getCreateTableQuery());
     }
 
     @Override

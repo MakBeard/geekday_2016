@@ -38,14 +38,15 @@ public class TaleChooserActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tale_chooser);
+
         ButterKnife.bind(this);
 
+        /*
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         toolbar.getBackground().setAlpha(0);
         getSupportActionBar().setHomeButtonEnabled(true);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-
+        */
 
         GridLayoutManager gridLayoutManager = new GridLayoutManager(this, 4);
         gridLayoutManager.supportsPredictiveItemAnimations();
@@ -119,12 +120,13 @@ public class TaleChooserActivity extends AppCompatActivity {
         }
         return mockList;
     }
-
+/*
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_tale_chooser_activity,menu);
         getSupportActionBar().setHomeButtonEnabled(true);
         return true;
     }
+    */
 }
 

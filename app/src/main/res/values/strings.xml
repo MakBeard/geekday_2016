@@ -11,6 +11,9 @@
     <string name="title_activity_tale_player">TalePlayer</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">Текст сказки. ооооочень длинный...</string>
+    <string name="all_right">Молодец, всё правильно!</string>
+    <string name="try_again">Попробуй еще раз!</string>
+
 
     <string-array name="child">
         <item>Ребенок №1</item>
