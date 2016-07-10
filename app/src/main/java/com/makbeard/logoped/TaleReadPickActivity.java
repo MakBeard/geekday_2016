@@ -218,28 +218,28 @@ public class TaleReadPickActivity extends AppCompatActivity {
             Log.d(TAG, "checkCorrectAnswers: 1 правильно ");
             i++;
         } else {
-            mImage1ImageView.setBackground(getDrawable(R.drawable.border));
+            mImage1ImageView.setBackground(getResources().getDrawable(R.drawable.border));
             mWrongAttemps++;
         }
         if (mChoosenImage2.equals(mTale.getTaleParts().get(1).getImageLink())) {
             Log.d(TAG, "checkCorrectAnswers: 2 правильно ");
             i++;
         } else {
-            mImage2ImageView.setBackground(getDrawable(R.drawable.border));
+            mImage2ImageView.setBackground(getResources().getDrawable(R.drawable.border));
             mWrongAttemps++;
         }
         if (mChoosenImage3.equals(mTale.getTaleParts().get(2).getImageLink())) {
             Log.d(TAG, "checkCorrectAnswers: 3 правильно ");
             i++;
         } else {
-            mImage3ImageView.setBackground(getDrawable(R.drawable.border));
+            mImage3ImageView.setBackground(getResources().getDrawable(R.drawable.border));
             mWrongAttemps++;
         }
         if (mChoosenImage4.equals(mTale.getTaleParts().get(3).getImageLink())) {
             Log.d(TAG, "checkCorrectAnswers: 4 правильно ");
             i++;
         } else {
-            mImage4ImageView.setBackground(getDrawable(R.drawable.border));
+            mImage4ImageView.setBackground(getResources().getDrawable(R.drawable.border));
             mWrongAttemps++;
         }
         if (i == 4) {
@@ -280,7 +280,7 @@ public class TaleReadPickActivity extends AppCompatActivity {
     static void shuffleArray(int[] ar)
     {
         // If running on Java 6 or older, use `new Random()` on RHS here
-        Random rnd = ThreadLocalRandom.current();
+        Random rnd = new Random(); //ThreadLocalRandom.current();
         for (int i = ar.length - 1; i > 0; i--)
         {
             int index = rnd.nextInt(i + 1);
