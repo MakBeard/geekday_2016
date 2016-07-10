@@ -31,6 +31,7 @@ import android.widget.Spinner;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.crash.FirebaseCrash;
 import com.makbeard.logoped.model.TaleModel;
 import com.makbeard.logoped.model.TalePart;
 
@@ -50,6 +51,8 @@ import butterknife.OnClick;
 public class MainActivity extends AppCompatActivity implements Const {
     public static final String P = Manifest.permission.WRITE_EXTERNAL_STORAGE;
 
+
+
     @BindView(R.id.enter_button)
     Button enter_button;
     @BindView(R.id.main_activity)
@@ -65,6 +68,9 @@ public class MainActivity extends AppCompatActivity implements Const {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        FirebaseCrash.report(new Exception("My first Android non-fatal error"));
+        FirebaseCrash.log("Activity created");
 
         Thread t = new Thread() {
             @Override
