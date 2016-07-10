@@ -72,13 +72,15 @@
         android:layout_alignStart="@+id/radiogroup"></Spinner>-->
 
     <Button
+        android:background="@drawable/button_green"
+        style="@style/ButtonText"
         android:id="@+id/enter_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Привет"
+        android:layout_marginEnd="73dp"
         android:layout_below="@+id/textView"
-        android:layout_alignParentEnd="true"
-        android:layout_marginEnd="66dp" />
+        android:layout_alignParentEnd="true" />
 
 <!--    <Button
         android:id="@+id/play_button"
