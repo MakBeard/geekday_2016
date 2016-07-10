@@ -5,9 +5,11 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="@color/back"
-    card_view:contentPadding="5dp">
+ >
 
     <RelativeLayout
+        android:id="@+id/relativelayouttalepart"
+        android:background="@color/back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
