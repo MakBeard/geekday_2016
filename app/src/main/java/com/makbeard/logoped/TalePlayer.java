@@ -8,6 +8,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteOpenHelper;
 import android.graphics.drawable.Drawable;
 import android.media.AudioManager;
+import android.media.MediaPlayer;
 import android.net.Uri;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.ActionBar;
@@ -115,25 +116,37 @@ public class TalePlayer extends AppCompatActivity {
                             super.onAnimationEnd(animation);
 
                             // playing audio
-                            TaleAudioPlayer taleAudioPlayer = new TaleAudioPlayer(context);
-                            taleAudioPlayer.playTale(taleParts.get(partIndex));
+
+                            MediaPlayer taleAudioPlayer = new MediaPlayer();
+                            taleAudioPlayer = MediaPlayer.create(getApplicationContext(),Uri.parse(part.getAudioLink()));
+                            taleAudioPlayer.setAudioStreamType(AudioManager.STREAM_MUSIC);
+                            taleAudioPlayer.start();
+                            taleAudioPlayer.setOnCompletionListener(new MediaPlayer.OnCompletionListener() {
+                                @Override
+                                public void onCompletion(MediaPlayer mp) {
+                                    Log.d("happy", "onCompletion");
+                                    slideView.animate()
+                                            .alpha(0f)
+                                            .setDuration(animationDuration)
+                                            .setListener(new AnimatorListenerAdapter() {
+                                                @Override
+                                                public void onAnimationEnd(Animator animation) {
+                                                    super.onAnimationEnd(animation);
+                                                    // Next slide
+                                                    if (++partIndex < taleParts.size()) {
+                                                        play();
+                                                    }
+                                                }
+                                            });
+                                }
+                            });
 
                             // fade out
-                            slideView.animate()
-                                    .alpha(0f)
-                                    .setDuration(animationDuration)
-                                    .setListener(new AnimatorListenerAdapter() {
-                                        @Override
-                                        public void onAnimationEnd(Animator animation) {
-                                            super.onAnimationEnd(animation);
-                                            // Next slide
-                                            if (++partIndex < taleParts.size()) {
-                                                play();
-                                            }
-                                        }
-                                    });
+
                         }
                     });
+        } else {
+            // go to another activity
         }
 
     }
