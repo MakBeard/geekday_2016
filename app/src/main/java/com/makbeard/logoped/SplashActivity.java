@@ -92,8 +92,8 @@ public class SplashActivity extends AppCompatActivity {
         LinkedList<TalePart> parts = tale.getTaleParts();
         for (int i = 0; i<parts.size(); i++) {
             TalePart part = parts.get(i);
-            part.setImageLink(copyAsset(tale.getImageLink()).toString());
-            parts.set(i,part);
+            part.setImageLink(copyAsset(tale.getTaleParts().get(i).getImageLink()).toString());
+            parts.set(i, part);
         }
         tale.setTaleParts(parts);
 
