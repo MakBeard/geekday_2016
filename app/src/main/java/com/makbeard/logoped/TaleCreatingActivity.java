@@ -61,8 +61,7 @@ public class TaleCreatingActivity extends AppCompatActivity implements IFilePick
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_tale_creating);
 
-        getSupportActionBar().setDisplayOptions(ActionBar.DISPLAY_SHOW_CUSTOM);
-        getSupportActionBar().setCustomView(R.layout.actionbar_layout);
+
 
         ButterKnife.bind(this);
 
