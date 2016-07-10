@@ -7,20 +7,22 @@
     <string name="enter_text">Введите текст</string>
     <string name="save">Сохранить</string>
     <string name="tale_saved">Рассказ сохранён</string>
-
-
-
     <string name="title_activity_tale_player">TalePlayer</string>
     <string name="dummy_button">Dummy Button</string>
     <string name="dummy_content">Текст сказки. ооооочень длинный...</string>
     <string name="all_right">Молодец, всё правильно!</string>
     <string name="try_again">Попробуй еще раз!</string>
-
+    <string name="choose_child_for_see_statistic">Выберите ребёнка для просмотра статистики</string>
+    <string name="adding_tale">Добавление сказки</string>
+    <string name="tales_passed">Рассказов пройдено:</string>
+    <string name="time_spent">Потраченое время:</string>
+    <string name="wrong_attemps">Неверных попыток:</string>
+    <string name="zero">0</string>
 
     <string-array name="child">
-        <item>Ребенок №1</item>
-        <item>Ребенок №2</item>
-        <item>Ребенок №3</item>
+        <item>Саша</item>
+        <item>Маша</item>
+        <item>Петя</item>
     </string-array>
 
     <string-array name="doctors">

@@ -247,7 +247,7 @@ public class TaleReadPickActivity extends AppCompatActivity {
 
             long timeSpent = System.currentTimeMillis() - mStartTime;
             saveStatisticsToDb(
-                    new ReadStatisticModel("Вася", mTale.getName(), timeSpent, mWrongAttemps));
+                    new ReadStatisticModel(Const.CHILD_TEST_NAME, mTale.getName(), timeSpent, mWrongAttemps));
 
             // TODO: 10.07.2016 Добавить переход в Activity диафильма
             Intent intent = new Intent(this, TalePlayer.class);

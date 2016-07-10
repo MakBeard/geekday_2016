@@ -16,6 +16,7 @@
             android:screenOrientation="landscape">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
@@ -33,7 +34,7 @@
             android:screenOrientation="landscape" />
         <activity
             android:name=".ListChildActivity"
-            android:screenOrientation="landscape" />
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".TaleChooserActivity"
             android:label="Выберите сказку"
@@ -46,7 +47,10 @@
         <activity
             android:name=".TaleTextActivity"
             android:parentActivityName=".TaleChooserActivity"
-            android:screenOrientation="landscape"/>
+            android:screenOrientation="landscape" />
+        <activity
+            android:name=".DetailStatisticActivity"
+            android:parentActivityName=".ListChildActivity"/>
     </application>
 
 </manifest>
