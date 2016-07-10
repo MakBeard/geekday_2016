@@ -10,6 +10,8 @@ import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.media.AudioManager;
 import android.os.Environment;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.content.res.Resources;
@@ -40,6 +42,7 @@ import butterknife.BindView;
 import butterknife.ButterKnife;
 import butterknife.OnClick;
 //sss
+
 /**
  * Стартовая Activity приложения
  * Created 09.07.2016.
@@ -63,10 +66,17 @@ public class MainActivity extends AppCompatActivity implements Const {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
-
-
-
+        Thread t = new Thread() {
+            @Override
+            public void run() {
+                try {
+                    sleep(15000);  //Delay of 3 seconds
+                } catch (Exception e) {
+                }
+                handler.sendEmptyMessage(0);
+            }
+        };
+        t.start();
 
 
         doFileOperationsWrapper();
@@ -77,7 +87,7 @@ public class MainActivity extends AppCompatActivity implements Const {
         am = (AudioManager) getSystemService(AUDIO_SERVICE);
 
         //test
-      //  play = (Button) findViewById(R.id.play_button);
+        //  play = (Button) findViewById(R.id.play_button);
       /*  assert play != null;
         play.setOnClickListener(v -> {
             Log.d("happy", "Player enable");
@@ -135,6 +145,16 @@ public class MainActivity extends AppCompatActivity implements Const {
     }
 
 
+    private Handler handler = new Handler() {
+
+
+        @Override
+        public void handleMessage(Message msg) {
+            relativeLayout.setBackgroundResource(R.drawable.activity_main_background2);
+        }
+    };
+
+
     private void doFileOperationsWrapper() {
 
         // если прав нет
@@ -177,7 +197,7 @@ public class MainActivity extends AppCompatActivity implements Const {
 
     @OnClick(R.id.enter_button)
     protected void onClickEnter() {
-        startActivity(new Intent(MainActivity.this,TaleChooserActivity.class));
+        startActivity(new Intent(MainActivity.this, TaleChooserActivity.class));
         overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
     }
 
@@ -215,16 +235,16 @@ public class MainActivity extends AppCompatActivity implements Const {
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main_activity,menu);
+        getMenuInflater().inflate(R.menu.menu_main_activity, menu);
         getSupportActionBar().setHomeButtonEnabled(true);
         return true;
     }
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()){
+        switch (item.getItemId()) {
             case R.id.action_doctor:
-                    Intent intent = new Intent(this, ListChildActivity.class);
+                Intent intent = new Intent(this, ListChildActivity.class);
                 intent.putExtra(EXTRA_CHOOSE, chooseDoctor);
                 startActivity(intent);
                 overridePendingTransition(R.anim.slide_in_left, R.anim.slide_out_right);
