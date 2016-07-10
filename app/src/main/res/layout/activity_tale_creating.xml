@@ -32,6 +32,8 @@
             android:layout_alignParentTop="true" />
 
         <Button
+            android:background="@drawable/button_green"
+            style="@style/ButtonText"
             android:id="@+id/save_tale_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
