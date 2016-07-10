@@ -3,9 +3,8 @@
     <item
         android:id="@+id/action_doctor"
         android:background="@color/back"
-        android:icon="@drawable/ic_arrow_back_black_24dp"
         android:showAsAction="always|collapseActionView"
-        android:title="СуперБатя" />
+        android:title="@string/adult"/>
 
 <!--    <item
         android:id="@+id/action_child"

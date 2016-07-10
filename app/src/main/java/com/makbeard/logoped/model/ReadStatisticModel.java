@@ -12,7 +12,10 @@ import com.pushtorefresh.storio.sqlite.annotations.StorIOSQLiteType;
 @StorIOSQLiteType(table = StatisticTable.TABLE_STATISTIC)
 public class ReadStatisticModel {
 
-    @StorIOSQLiteColumn(name = StatisticTable.COLUMN_STATISTIC_CHILD_NAME, key = true)
+    @StorIOSQLiteColumn(name = StatisticTable.COLUMN_ID, key = true)
+    public int id;
+
+    @StorIOSQLiteColumn(name = StatisticTable.COLUMN_STATISTIC_CHILD_NAME)
     public String childName;
 
     @StorIOSQLiteColumn(name = StatisticTable.COLUMN_STATISTIC_TALE_NAME)

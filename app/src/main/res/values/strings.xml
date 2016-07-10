@@ -14,10 +14,11 @@
     <string name="try_again">Попробуй еще раз!</string>
     <string name="choose_child_for_see_statistic">Выберите ребёнка для просмотра статистики</string>
     <string name="adding_tale">Добавление сказки</string>
-    <string name="tales_passed">Рассказов пройдено:</string>
-    <string name="time_spent">Потраченое время:</string>
-    <string name="wrong_attemps">Неверных попыток:</string>
+    <string name="tales_passed">Рассказов пройдено</string>
+    <string name="time_spent">Потраченое время</string>
+    <string name="wrong_attemps">Неверных попыток</string>
     <string name="zero">0</string>
+    <string name="adult">Взрослый</string>
 
     <string-array name="child">
         <item>Саша</item>

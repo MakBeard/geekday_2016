@@ -1,14 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="wrap_content"
+    card_view:cardCornerRadius="0dp"
+    card_view:cardElevation="0dp"
+    card_view:contentPadding="8dp">
 
     <RelativeLayout
         android:id="@+id/relativelayoutstatistics"
-        android:background="@color/back"
         android:layout_width="match_parent"
-        android:layout_height="60dp">
+        android:layout_height="wrap_content">
 
         <TextView
             android:textColor="#000000"
@@ -27,50 +30,58 @@
             android:layout_height="wrap_content"
             android:text="tale_name_textview"
             android:paddingLeft="10dp"
+            android:layout_alignParentTop="true"
             android:layout_toEndOf="@id/textView" />
 
         <TextView
-            android:layout_marginTop="2dp"
             android:textColor="#000000"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/time_spent"
-            android:layout_alignParentBottom="true"
-            android:layout_alignEnd="@+id/textView"
-            android:id="@+id/textView3" />
+            android:id="@+id/textView3"
+            android:paddingTop="10dp"
+            android:layout_below="@+id/textView2"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:textColor="#000000"
-            android:layout_marginTop="2dp"
             android:id="@+id/time_spent_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="time_spent"
             android:paddingLeft="10dp"
-            android:layout_alignParentBottom="true"
-            android:layout_toEndOf="@+id/textView3" />
+            android:paddingTop="10dp"
+            android:layout_alignTop="@+id/textView3"
+            android:layout_toEndOf="@+id/textView2" />
 
         <TextView
             android:textColor="#000000"
-            android:layout_marginTop="2dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/wrong_attemps"
             android:id="@+id/textView2"
-            android:layout_centerVertical="true"
-            android:layout_alignStart="@+id/textView3" />
+            android:paddingTop="10dp"
+            android:layout_below="@+id/tale_name_textview"
+            android:layout_alignParentStart="true" />
 
         <TextView
             android:textColor="#000000"
-            android:layout_marginTop="2dp"
             android:id="@+id/wrong_attemps_textview"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="wrong_attemps"
             android:paddingLeft="10dp"
-            android:layout_centerVertical="true"
+            android:paddingTop="10dp"
+            android:layout_below="@+id/tale_name_textview"
             android:layout_toEndOf="@+id/textView2" />
 
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="2dp"
+            android:paddingTop="5dp"
+            android:background="@android:color/darker_gray"
+            android:layout_alignBottom="@id/time_spent_textview"
+            android:layout_alignParentStart="true" />
 
     </RelativeLayout>
 
